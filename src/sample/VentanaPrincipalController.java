@@ -65,7 +65,7 @@ public class VentanaPrincipalController implements Initializable {
         System.out.println("PRUEBA");
     }
 
-    //Quiero ver si se actualiza
+    //Quiero ver si se actualiza 2.0
 
     @FXML
     private void AbrirRegistroLibros (ActionEvent event) throws IOException{
