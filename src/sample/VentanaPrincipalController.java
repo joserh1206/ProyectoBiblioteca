@@ -58,12 +58,6 @@ public class VentanaPrincipalController implements Initializable {
         fechaTF.setText(dateFormat.format(fecha_actual));
     }
 
-    public void prueba(){
-        System.out.println("PRUEBA");
-    }
-
-    //Quiero ver si se actualiza 2.002
-
     @FXML
     private void AbrirRegistroLibros (ActionEvent event) throws IOException{
         FXMLLoader fxmlL = new FXMLLoader(getClass().getResource("VentanaRegistroLibros.fxml"));
