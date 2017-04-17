@@ -42,9 +42,7 @@ public class VentanaPrincipalController implements Initializable {
     @FXML private Button bVenta;
     public static ObservableList<Excel.Libro> libros = FXCollections.observableArrayList();
 
-
     private int posicionLibroEnTabla;
-
 
     @FXML private DatePicker fecha;
     @FXML public Button bRegistro;
