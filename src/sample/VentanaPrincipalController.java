@@ -63,6 +63,11 @@ public class VentanaPrincipalController implements Initializable {
         fechaTF.setText(dateFormat.format(fecha_actual));
     }
 
+    public void prueba(){
+        System.out.println("PRUEBA");
+    }
+
+    //Quiero ver si se actualiza
 
     @FXML
     private void AbrirRegistroLibros (ActionEvent event) throws IOException{
