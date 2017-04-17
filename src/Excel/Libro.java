@@ -34,6 +34,7 @@ public class Libro {
         estado = true;
     }
 
+    //XdxDXdxDxdxdxDXdDXxd
 
     public String getGenero() {
         return genero.get();
