@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="368.0" prefWidth="533.0" stylesheets="@ThemeReg.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.VentanaRegistroController">
+   <top>
+      <Label text="Regístrate! Es gratis y siempre lo será" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="30.0" top="10.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <center>
+      <HBox prefHeight="219.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region HBox.hgrow="ALWAYS" />
+            <VBox prefHeight="326.0" prefWidth="141.0" spacing="20.0">
+               <children>
+                  <Label text="Nombre:" />
+                  <Label text="Correo electrónico:" />
+                  <Label text="Cédula:" />
+                  <Label text="Teléfono:" />
+                  <Label text="Contraseña" />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="326.0" prefWidth="223.0" spacing="10.0">
+               <children>
+                  <TextField fx:id="regNombre" />
+                  <TextField fx:id="regEmail" />
+                  <TextField fx:id="regCedula" />
+                  <TextField fx:id="regTelefono" />
+                  <PasswordField fx:id="regcontrasenia" />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+   </center>
+   <bottom>
+      <VBox prefHeight="0.0" prefWidth="489.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#Ingresar" text="Registrarse">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="350.0" top="50.0" />
+               </VBox.margin>
+            </Button>
+            <HBox VBox.vgrow="ALWAYS">
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onAction="#Cancelar" text="Cancelar">
+                     <HBox.margin>
+                        <Insets bottom="10.0" right="20.0" />
+                     </HBox.margin>
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+      </VBox>
+   </bottom>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="25.0" prefWidth="112.0" text="Foto de perfil">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imagenP" fitHeight="107.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@perfil.jpg" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
+               </VBox.margin>
+            </ImageView>
+            <Button fx:id="btnBuscarP" mnemonicParsing="false" onAction="#BuscarImagen" text="Buscar">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
