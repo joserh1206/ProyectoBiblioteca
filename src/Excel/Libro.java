@@ -34,8 +34,6 @@ public class Libro {
         estado = true;
     }
 
-    //XdxDXdxDxdxdxDXdDXxd
-
     public String getGenero() {
         return genero.get();
     }
@@ -104,6 +102,7 @@ public class Libro {
         msj += "Año: " + anho + "\n";
         msj += "Editorial: " + editorial + "\n";
         msj += "Tipo: " + tipo + "\n";
+        msj += "Género: " + genero + "\n";
         msj += "ID: " + idLibro + "\n";
         msj += "Estado: ";
         if (estado)

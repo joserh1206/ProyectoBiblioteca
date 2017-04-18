@@ -27,7 +27,7 @@ import sample.VentanaRegLibController;
  */
 
 public class EditorExcel {
-    public ArrayList <Libro> librosA = new ArrayList(); //guarda la lista de sismos registrados
+    public ArrayList <Libro> librosA = new ArrayList(); //guarda la lista de libros registrados
     //public static ArrayList <Revista> revistas = new ArrayList();
     
     /**
@@ -65,12 +65,12 @@ public class EditorExcel {
             //System.out.println("Filas: " + filas);
 
             String ID = "";
-            SimpleStringProperty nombre = new SimpleStringProperty();
-            SimpleStringProperty autor = new SimpleStringProperty();
-            SimpleStringProperty anho = new SimpleStringProperty();
-            SimpleStringProperty editorial = new SimpleStringProperty();
-            SimpleStringProperty tipo = new SimpleStringProperty();
-            SimpleStringProperty genero = new SimpleStringProperty();
+            String nombre = "";
+            String autor = "";
+            String anho = "";
+            String editorial = "";
+            String tipo = "";
+            String genero = "";
 
             librosA.clear();             //limpia el arrayList para evitar duplicados, no hay problema pues un libro no se debería poder borrar del sistema
             for (int f = 1; f <= filas; f++) {
@@ -87,30 +87,31 @@ public class EditorExcel {
                         case 0:
                             ID = filaActual.getCell(c).getStringCellValue();
                             if(ID.contains("L"))
-                                tipo.set("Libro");
+                                tipo = "Libro";
                             if(ID.contains("R"))
-                                tipo.set("Revista");
+                                tipo = "Revista";
                             //System.out.println(ID);
                             break;
                         case 1:
-                            nombre.set(filaActual.getCell(c).getStringCellValue());
+                            nombre = filaActual.getCell(c).getStringCellValue();
+                            //nombre.set(filaActual.getCell(c).getStringCellValue());
                             //System.out.println(nombre);
                             break;
                         case 2:
-                            autor.set(filaActual.getCell(c).getStringCellValue());
+                            autor = filaActual.getCell(c).getStringCellValue();
                             //System.out.println(autor);
                             break;
                         case 3:
-                            anho.set(filaActual.getCell(c).getStringCellValue());
+                            anho = filaActual.getCell(c).getStringCellValue();
                             //System.out.println(anho);
                             break;
                         case 4:
-                            editorial.set(filaActual.getCell(c).getStringCellValue());
+                            editorial = filaActual.getCell(c).getStringCellValue();
                             //System.out.println(editorial);
                             break;
                         case 5:
-                            String tipoAux = filaActual.getCell(c).getStringCellValue();
-                            genero.set(tipoAux);
+                            genero = filaActual.getCell(c).getStringCellValue();
+                            //System.out.println(genero);
                             break;
                     }
                     //System.out.println();
@@ -122,15 +123,18 @@ public class EditorExcel {
                     System.out.println("No hay ningún libro registrado.");
                 else
                     System.out.println("¡Leído correctamente!");
-                Libro libro = new Libro ();     //crea el libro con los parámetros recibidos
-                libro.setTipo(tipo);
-                libro.setNombre(nombre);
-                libro.setEditorial(editorial);
-                libro.setAutor(autor);
-                libro.setAnho(anho);
-                libro.setGenero(genero);
-                libro.setIdLibro(ID);
-                librosA.add(libro);
+
+                Libro l;
+                l = new Libro ();     //crea el libro con los parámetros recibidos
+                l.tipo.set(tipo);
+                l.nombre.set(nombre);
+                l.editorial.set(editorial);
+                l.autor.set(autor);
+                l.anho.set(anho);
+                l.genero.set(genero);
+                l.setIdLibro(ID);
+                librosA.add(l);
+                librosA.get(0).toString();
             }
         } catch (FileNotFoundException fileNotFoundException) {         //error si no encuentra el archivo
             System.out.println("No se encontró el fichero: " + fileNotFoundException);
