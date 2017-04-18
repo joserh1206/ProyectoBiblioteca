@@ -1,10 +1,6 @@
 package sample;
 
 import Usuario.Usuario;
-import javafx.scene.control.*;
-
-import javafx.scene.image.Image;
-import javafx.stage.FileChooser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +8,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +26,7 @@ public class VentanaRegistroController implements Initializable {
     @FXML private Label lblUsuario;
     @FXML private Button BtnBuscarP;
     @FXML private TextField regNombre;
+    @FXML private TextField regUsuario;
     @FXML private PasswordField regcontrasenia;
     @FXML private TextField regEmail;
     @FXML private TextField regCedula;
@@ -57,6 +58,7 @@ public class VentanaRegistroController implements Initializable {
                 Controller.nombre_usuario = regNombre.getText();
                 Controller.contrasenia_usuario = regcontrasenia.getText();
                 Usuario usuario = new Usuario();
+                usuario.nombre = regUsuario.getText();
                 usuario.nombre_usuario = regNombre.getText();
                 usuario.cedula = regCedula.getText();
                 usuario.contrasenia = regcontrasenia.getText();

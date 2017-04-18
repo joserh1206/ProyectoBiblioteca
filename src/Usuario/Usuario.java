@@ -10,6 +10,7 @@ package Usuario;
 public class Usuario {
 
     public String nombre_usuario;
+    public String nombre;
     public String correo;
     public String cedula;
     public String telefono;

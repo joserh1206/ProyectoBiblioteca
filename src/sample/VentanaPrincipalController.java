@@ -72,7 +72,7 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private void AbrirPrestamoLibros (ActionEvent event) throws IOException{
-        FXMLLoader fxmlL = new FXMLLoader(getClass().getResource("VentanaPrestamoLibros.fxml"));
+        FXMLLoader fxmlL = new FXMLLoader(getClass().getResource("VentanaPrestamoVenta.fxml"));
         Parent rootl = (Parent)fxmlL.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(rootl));

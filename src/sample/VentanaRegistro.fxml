@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.text.Font?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="368.0" prefWidth="533.0" stylesheets="@ThemeReg.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.VentanaRegistroController">
    <top>
       <Label text="Regístrate! Es gratis y siempre lo será" BorderPane.alignment="CENTER">
@@ -27,6 +25,7 @@
             <VBox prefHeight="326.0" prefWidth="141.0" spacing="20.0">
                <children>
                   <Label text="Nombre:" />
+                  <Label text="Nombre de usuario:" />
                   <Label text="Correo electrónico:" />
                   <Label text="Cédula:" />
                   <Label text="Teléfono:" />
@@ -42,6 +41,7 @@
             <VBox prefHeight="326.0" prefWidth="223.0" spacing="10.0">
                <children>
                   <TextField fx:id="regNombre" />
+                  <TextField fx:id="regUsuario" />
                   <TextField fx:id="regEmail" />
                   <TextField fx:id="regCedula" />
                   <TextField fx:id="regTelefono" />
@@ -59,7 +59,7 @@
       </HBox>
    </center>
    <bottom>
-      <VBox prefHeight="0.0" prefWidth="489.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="88.0" prefWidth="533.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#Ingresar" text="Registrarse">
                <VBox.margin>

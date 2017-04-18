@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 /**
  * Created by joser on 17/4/2017.
  */
-public class VentanaPrestamoLibrosController implements Initializable {
+public class VentanaPrestamoVentaController implements Initializable {
 
     @FXML private Label FechaActualLB;
     @FXML private TextField IDPrestamoLibroTF;
