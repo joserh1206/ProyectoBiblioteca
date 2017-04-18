@@ -1,6 +1,5 @@
 package sample;
 
-import com.sun.deploy.util.FXLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,10 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -61,6 +58,8 @@ public class Controller implements Initializable {
                 app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 app_stage.hide();
                 app_stage.setScene(VentanaPrincipal_scene);
+                app_stage.setTitle("Biblioteca");
+                app_stage.setResizable(false);
                 app_stage.show();
             }
             else{
@@ -85,6 +84,8 @@ public class Controller implements Initializable {
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         app_stage.hide();
         app_stage.setScene(VentanaRegistro_scene);
+        app_stage.setResizable(false);
+        app_stage.setTitle("Registro");
         app_stage.show();
     }
 

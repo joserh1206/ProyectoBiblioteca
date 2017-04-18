@@ -44,6 +44,7 @@ public class VentanaPrincipalController implements Initializable {
     @FXML private DatePicker fecha;
     @FXML public Button bRegistro;
     @FXML private Button bCerrarSesion;
+    @FXML private Button consultarDeudasBT;
     @FXML private Label lblUsuario;
     @FXML private Label fechaTF;
 
@@ -64,6 +65,30 @@ public class VentanaPrincipalController implements Initializable {
         Parent rootl = (Parent)fxmlL.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(rootl));
+        stage.setTitle("Registrar Libros");
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    @FXML
+    private void AbrirPrestamoLibros (ActionEvent event) throws IOException{
+        FXMLLoader fxmlL = new FXMLLoader(getClass().getResource("VentanaPrestamoLibros.fxml"));
+        Parent rootl = (Parent)fxmlL.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(rootl));
+        stage.setTitle("Nueva Transaccion");
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    @FXML
+    private void AbrirDeudasCliente (ActionEvent event) throws IOException{
+        FXMLLoader fxmlL = new FXMLLoader(getClass().getResource("VentanaMultasCliente.fxml"));
+        Parent rootl = fxmlL.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(rootl));
+        stage.setResizable(false);
+        stage.setTitle("Historico de Multas");
         stage.show();
     }
 
