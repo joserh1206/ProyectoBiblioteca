@@ -15,5 +15,5 @@ public class Usuario {
     public String cedula;
     public String telefono;
     public String contrasenia;
-    //xDxdxddxXxd
+
 }
