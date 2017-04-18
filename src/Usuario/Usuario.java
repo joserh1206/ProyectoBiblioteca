@@ -1,8 +1,12 @@
 package Usuario;
 
 /**
- * Created by joser on 16/4/2017.
+ * Clase que crea nuevos usuarios
+ * @author Randall Delgado
+ * @author José Luis Rodríguez
+ * @author Óscar Cortés
  */
+
 public class Usuario {
 
     public String nombre_usuario;
