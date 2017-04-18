@@ -8,8 +8,10 @@ package ClasesBiblioteca;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
- *
- * @author Randall
+ * Clase que se encarga de crear nuevos libros
+ * @author Randall Delgado
+ * @author José Luis Rodríguez
+ * @author Óscar Cortés
  */
 public class Libro {
 
@@ -22,6 +24,7 @@ public class Libro {
     private static int cantLibros = 0;
     public String idLibro;
     public boolean estado; //true = disponible; false = prestado
+    public int diasDePrestamo = 10;
 
     public Libro (){
         cantLibros++;
