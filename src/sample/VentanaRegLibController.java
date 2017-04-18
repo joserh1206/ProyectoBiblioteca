@@ -4,8 +4,8 @@ package sample;
  */
 
 
-import Excel.EditorExcel;
-import Excel.Libro;
+import ClasesBiblioteca.EditorExcel;
+import ClasesBiblioteca.Libro;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
@@ -45,7 +45,7 @@ public class VentanaRegLibController implements Initializable {
     @FXML
     private void registrar2(ActionEvent event) throws IOException {
         if (rbManual.isSelected()) {
-            Excel.Libro libro = new Excel.Libro();
+            ClasesBiblioteca.Libro libro = new ClasesBiblioteca.Libro();
             libro.nombre.set(nombreTF.getText());
             libro.autor.set(autorTF.getText());
             libro.editorial.set(editorialTF.getText());

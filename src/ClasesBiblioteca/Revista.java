@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Excel;
+package ClasesBiblioteca;
 
 import javafx.beans.property.SimpleStringProperty;
 
@@ -17,7 +17,7 @@ public class Revista {
     private int numero;
     public SimpleStringProperty anho;
     private boolean tipo;   //true = venta; false = préstamo
-    private EstadoRevista estado;
+    private String estado;
     private static int cantRevistas = 0;
     private String idRevista;
     private double costo;
@@ -27,7 +27,7 @@ public class Revista {
         numero = pNumero;
         anho = pAnho;
         tipo = pTipo;
-        estado = EstadoRevista.Disponible;
+        estado = "Disponible";
         cantRevistas++;
         if (cantRevistas < 10)
             idRevista = "R-00" + cantRevistas;
@@ -89,7 +89,7 @@ public class Revista {
         idRevista = pIdRevista;
     }
     
-    public void setEstado(EstadoRevista pEstado){
+    public void setEstado(String pEstado){
         estado = pEstado;
     }
     

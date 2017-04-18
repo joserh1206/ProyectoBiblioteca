@@ -28,16 +28,16 @@ public class VentanaPrincipalController implements Initializable {
 
     ObservableList<String> EstadoList = FXCollections.observableArrayList("Disponibles", "Vendidos", "Prestados");
 
-    @FXML public TableView<Excel.Libro> tablaLibro;
-    @FXML public TableColumn<Excel.Libro, String> tipoCL;
-    @FXML public TableColumn<Excel.Libro, String> nombreCL;
-    @FXML public TableColumn<Excel.Libro, String> autorCL;
-    @FXML public TableColumn<Excel.Libro, String> editorialCL;
-    @FXML public TableColumn<Excel.Libro, String> generoCL;
-    @FXML public TableColumn<Excel.Libro, String> anioCL;
+    @FXML public TableView<ClasesBiblioteca.Libro> tablaLibro;
+    @FXML public TableColumn<ClasesBiblioteca.Libro, String> tipoCL;
+    @FXML public TableColumn<ClasesBiblioteca.Libro, String> nombreCL;
+    @FXML public TableColumn<ClasesBiblioteca.Libro, String> autorCL;
+    @FXML public TableColumn<ClasesBiblioteca.Libro, String> editorialCL;
+    @FXML public TableColumn<ClasesBiblioteca.Libro, String> generoCL;
+    @FXML public TableColumn<ClasesBiblioteca.Libro, String> anioCL;
     @FXML private ChoiceBox<String> estadoCB;
     @FXML private Button bVenta;
-    public static ObservableList<Excel.Libro> libros = FXCollections.observableArrayList();
+    public static ObservableList<ClasesBiblioteca.Libro> libros = FXCollections.observableArrayList();
 
     private int posicionLibroEnTabla;
 
@@ -80,21 +80,21 @@ public class VentanaPrincipalController implements Initializable {
         app_stage.show();
     }
 
-    private final ListChangeListener<Excel.Libro> selectorTablaLibros =
-            new ListChangeListener<Excel.Libro>() {
+    private final ListChangeListener<ClasesBiblioteca.Libro> selectorTablaLibros =
+            new ListChangeListener<ClasesBiblioteca.Libro>() {
                 @Override
-                public void onChanged(ListChangeListener.Change<? extends Excel.Libro> c) {
+                public void onChanged(ListChangeListener.Change<? extends ClasesBiblioteca.Libro> c) {
                     ponerLibroSeleccionado();
                 }
             };
     /**
      * PARA SELECCIONAR UNA CELDA DE LA TABLA "tablaPersonas"
      */
-    public Excel.Libro getTablaLibrosSeleccionados() {
+    public ClasesBiblioteca.Libro getTablaLibrosSeleccionados() {
         if (tablaLibro != null) {
-            List<Excel.Libro> tabla = tablaLibro.getSelectionModel().getSelectedItems();
+            List<ClasesBiblioteca.Libro> tabla = tablaLibro.getSelectionModel().getSelectedItems();
             if (tabla.size() == 1) {
-                final Excel.Libro competicionSeleccionada = tabla.get(0);
+                final ClasesBiblioteca.Libro competicionSeleccionada = tabla.get(0);
                 return competicionSeleccionada;
             }
         }
@@ -102,11 +102,11 @@ public class VentanaPrincipalController implements Initializable {
     }
 
     private void ponerLibroSeleccionado() {
-        final Excel.Libro persona = getTablaLibrosSeleccionados();
+        final ClasesBiblioteca.Libro persona = getTablaLibrosSeleccionados();
         posicionLibroEnTabla = libros.indexOf(persona);
     }
 
-    public ObservableList<Excel.Libro> getLibros(){
+    public ObservableList<ClasesBiblioteca.Libro> getLibros(){
         return libros;
     }
 
@@ -135,7 +135,7 @@ public class VentanaPrincipalController implements Initializable {
         this.inicializarTablaLibros();
 
         // Seleccionar las tuplas de la tabla de las personas
-        final ObservableList<Excel.Libro> tablaPersonaSel = tablaLibro.getSelectionModel().getSelectedItems();
+        final ObservableList<ClasesBiblioteca.Libro> tablaPersonaSel = tablaLibro.getSelectionModel().getSelectedItems();
         tablaPersonaSel.addListener(selectorTablaLibros);
     }
 }
