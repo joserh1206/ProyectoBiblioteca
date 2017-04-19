@@ -24,7 +24,7 @@ public class Libro {
     private static int cantLibros = 0;
     public String idLibro;
     public boolean estado; //true = disponible; false = prestado
-    public int diasDePrestamo = 10;
+    public static int diasDePrestamo = 10;
 
     public Libro (){
         cantLibros++;
@@ -97,6 +97,9 @@ public class Libro {
         estado = pEstado;
     }
 
+    public void setDiasDePrestamo (int pDiasDePrestamo) {
+        diasDePrestamo = pDiasDePrestamo;
+    }
 
     @Override
     public String toString (){
