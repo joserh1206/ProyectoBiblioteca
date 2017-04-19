@@ -14,13 +14,14 @@ import javafx.beans.property.SimpleStringProperty;
 public class Revista {
     
     public SimpleStringProperty nombre;
-    private int numero;
+    public int numero;
     public SimpleStringProperty anho;
-    private boolean tipo;   //true = venta; false = préstamo
-    private String estado;
-    private static int cantRevistas = 0;
-    private String idRevista;
-    private double costo;
+    public boolean tipo;   //true = venta; false = préstamo
+    public String estado;
+    public static int cantRevistas = 0;
+    public String idRevista;
+    public double costo;
+    public static int diasDePrestamo = 5;
 
     public Revista(SimpleStringProperty pNombre, int pNumero, SimpleStringProperty pAnho, boolean pTipo, double pCosto) {
         nombre = pNombre;
@@ -92,7 +93,11 @@ public class Revista {
     public void setEstado(String pEstado){
         estado = pEstado;
     }
-    
+
+    public void setDiasDePrestamo(int pDiasDePrestamo){
+        diasDePrestamo = pDiasDePrestamo;
+    }
+
     @Override
     public String toString (){
         String msj = "Nombre: " + nombre + "\n";
