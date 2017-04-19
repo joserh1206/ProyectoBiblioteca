@@ -55,7 +55,20 @@ public class VentanaRegLibController implements Initializable {
                 libro.tipo.set(libroRB.getText());
             if (revistaRB.isSelected())
                 libro.tipo.set(revistaRB.getText());
-            VentanaPrincipalController.libros.add(libro);
+            if (VentanaPrincipalController.libros.isEmpty())
+                VentanaPrincipalController.libros.add(libro);
+            else {
+                int flagIguales = 0;
+                for (int i = 0; i < VentanaPrincipalController.libros.size(); i++) {
+                    Libro l = VentanaPrincipalController.libros.get(i);
+                    if (l.nombre.get().equals(libro.nombre.get()) && l.autor.get().equals(libro.autor.get()) && l.anho.get().equals(libro.anho.get()) && l.editorial.get().equals(libro.editorial.get()) && l.genero.get().equals(libro.genero.get())) {
+                        flagIguales++;
+                        break;
+                    }
+                }
+                if (flagIguales == 0)
+                    VentanaPrincipalController.libros.add(libro);
+            }
             Stage stage = (Stage) registrarBT.getScene().getWindow();
             stage.close();
         }
@@ -70,8 +83,23 @@ public class VentanaRegLibController implements Initializable {
             }
             ArrayList<Libro> librosB;//guarda la lista de sismos registrados
             librosB = x.cargar(arch);
-            VentanaPrincipalController.libros.addAll(librosB);
-
+            if (VentanaPrincipalController.libros.isEmpty())
+                VentanaPrincipalController.libros.addAll(librosB);
+            else {
+                ArrayList<Libro> aux = new ArrayList<Libro>();
+                int flagIguales = 0;
+                for (int i = 0; i < librosB.size(); i++) {
+                    flagIguales = 0;
+                    for (int j = 0; j < VentanaPrincipalController.libros.size(); j++) {
+                        Libro l = VentanaPrincipalController.libros.get(j);
+                        if (l.nombre.get().equals(librosB.get(i).nombre.get()) && l.autor.get().equals(librosB.get(i).autor.get()) && l.anho.get().equals(librosB.get(i).anho.get()) && l.editorial.get().equals(librosB.get(i).editorial.get()) && l.genero.get().equals(librosB.get(i).genero.get()))
+                            flagIguales++;
+                    }
+                    if (flagIguales == 0)
+                        aux.add(librosB.get(i));
+                }
+                VentanaPrincipalController.libros.addAll(aux);
+            }
             Stage stage = (Stage) registrarBT.getScene().getWindow();
             stage.close();
         }
