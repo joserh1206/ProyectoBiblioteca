@@ -1,6 +1,6 @@
 package sample;
 
-import Usuario.Usuario;
+import Usuario.Cliente;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,15 +11,15 @@ import java.util.Vector;
 
 public class Main extends Application {
 
-    public static Vector<Usuario> usuarios = new Vector<Usuario>();
+    public static Vector<Cliente> clientes = new Vector<Cliente>();
 
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Usuario u = new Usuario();
+        Cliente u = new Cliente();
         u.nombre_usuario = "admin";
         u.contrasenia = "";
-        usuarios.add(u);
+        clientes.add(u);
         Parent root = FXMLLoader.load(getClass().getResource("VentanaIngreso.fxml"));
         primaryStage.setTitle("Biblioteca");
         primaryStage.setScene(new Scene(root));

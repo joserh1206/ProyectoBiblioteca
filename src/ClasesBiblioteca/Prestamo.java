@@ -1,11 +1,9 @@
 package ClasesBiblioteca;
 
-import Usuario.Usuario;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import Usuario.Cliente;
 
 /**
- * Clase que maneja los préstamos realizados por usuarios
+ * Clase que maneja los préstamos realizados por clientes
  * @author Randall Delgado
  * @author José Luis Rodríguez
  * @author Óscar Cortés
@@ -15,15 +13,15 @@ public class Prestamo {
 
     public Libro libroPrestado;
     public Revista revistaPrestada;
-    public Usuario usuario;
+    public Cliente cliente;
 
-    public Prestamo(Usuario pUsuario, Libro pLibroPrestado){
-        usuario = pUsuario;
+    public Prestamo(Cliente pCliente, Libro pLibroPrestado){
+        cliente = pCliente;
         libroPrestado = pLibroPrestado;
     }
 
-    public Prestamo(Usuario pUsuario, Revista pRevistaPrestada) {
-        usuario = pUsuario;
+    public Prestamo(Cliente pCliente, Revista pRevistaPrestada) {
+        cliente = pCliente;
         revistaPrestada = pRevistaPrestada;
     }
 }

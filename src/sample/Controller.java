@@ -31,16 +31,16 @@ public class Controller implements Initializable {
     private PasswordField password;*/
 
     private boolean BuscarUsuario(String nombre){
-        for(int i=0; i<Main.usuarios.size(); i++){
-            if(Objects.equals(Main.usuarios.get(i).nombre_usuario, nombre))
+        for(int i = 0; i<Main.clientes.size(); i++){
+            if(Objects.equals(Main.clientes.get(i).nombre_usuario, nombre))
                 return true;
         }
         return false;
     }
 
     private boolean BuscarContrasenia(String contrasenia){
-        for(int i=0; i<Main.usuarios.size(); i++){
-            if(Objects.equals(Main.usuarios.get(i).contrasenia, contrasenia))
+        for(int i = 0; i<Main.clientes.size(); i++){
+            if(Objects.equals(Main.clientes.get(i).contrasenia, contrasenia))
                 return true;
         }
         return false;
@@ -71,8 +71,8 @@ public class Controller implements Initializable {
         }
         else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Nombre de usuario Incorrecta");
-            alert.setContentText("El usuario ingresado no existe o es incorrecto");
+            alert.setTitle("Nombre de cliente Incorrecta");
+            alert.setContentText("El cliente ingresado no existe o es incorrecto");
             alert.showAndWait();
         }
     }

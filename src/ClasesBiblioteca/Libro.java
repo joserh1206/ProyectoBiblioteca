@@ -35,6 +35,24 @@ public class Libro {
         else
             idLibro = "L-" + cantLibros;
         estado = true;
+        tipo.set("Libro");
+    }
+
+    public Libro(String nombre, String autor, String anho, String editorial, String genero){
+        this.nombre.set(nombre);
+        this.autor.set(autor);
+        this.anho.set(anho);
+        this.editorial.set(editorial);
+        tipo.set("Libro");
+        this.genero.set(genero);
+        cantLibros++;
+        if (cantLibros < 10)
+            idLibro = "L-00" + cantLibros;
+        else if (cantLibros < 100)
+            idLibro = "L-0" + cantLibros;
+        else
+            idLibro = "L-" + cantLibros;
+        estado = true;
     }
 
     public String getGenero() {
@@ -105,12 +123,12 @@ public class Libro {
 
     @Override
     public String toString (){
-        String msj = "Nombre: " + nombre + "\n";
-        msj += "Autor: " + autor + "\n";
-        msj += "Año: " + anho + "\n";
-        msj += "Editorial: " + editorial + "\n";
-        msj += "Tipo: " + tipo + "\n";
-        msj += "Género: " + genero + "\n";
+        String msj = "Nombre: " + nombre.get() + "\n";
+        msj += "Autor: " + autor.get() + "\n";
+        msj += "Año: " + anho.get() + "\n";
+        msj += "Editorial: " + editorial.get() + "\n";
+        msj += "Tipo: " + tipo.get() + "\n";
+        msj += "Género: " + genero.get() + "\n";
         msj += "ID: " + idLibro + "\n";
         msj += "Estado: ";
         if (estado)

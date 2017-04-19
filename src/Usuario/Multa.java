@@ -4,7 +4,7 @@ import ClasesBiblioteca.Revista;
 import ClasesBiblioteca.Libro;
 
 /**
- * Clase que crea las multas de los usuarios
+ * Clase que crea las multas de los clientes
  * @author Randall Delgado
  * @author José Luis Rodríguez
  * @author Óscar Cortés
@@ -25,6 +25,14 @@ public class Multa {
         this.monto = monto;
     }
 
-    public int getMonto(){ return monto;}
+    public int getMonto(){
+        return monto;
+    }
+
+    public String toString(){
+        String msj = "Monto a pagar: " + monto + "\n";
+        System.out.println(msj);
+        return msj;
+    }
 
 }

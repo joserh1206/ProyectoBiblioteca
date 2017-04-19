@@ -16,18 +16,16 @@ public class Revista {
     public SimpleStringProperty nombre;
     public int numero;
     public SimpleStringProperty anho;
-    public boolean tipo;   //true = venta; false = préstamo
+    public boolean tipoUso;   //true = venta; false = préstamo
+    public SimpleStringProperty tipo;
     public String estado;
     public static int cantRevistas = 0;
     public String idRevista;
     public double costo;
     public static int diasDePrestamo = 5;
 
-    public Revista(SimpleStringProperty pNombre, int pNumero, SimpleStringProperty pAnho, boolean pTipo, double pCosto) {
-        nombre = pNombre;
-        numero = pNumero;
-        anho = pAnho;
-        tipo = pTipo;
+    public Revista(){
+        tipo.set("Revista");
         estado = "Disponible";
         cantRevistas++;
         if (cantRevistas < 10)
@@ -36,7 +34,23 @@ public class Revista {
             idRevista = "R-0" + cantRevistas;
         else
             idRevista = "R-" + cantRevistas;
-        if (tipo)
+    }
+
+    public Revista(String pNombre, int pNumero, String pAnho, boolean pTipoUso, double pCosto) {
+        nombre.set(pNombre);
+        numero = pNumero;
+        anho.set(pAnho);
+        tipoUso = pTipoUso;
+        tipo.set("Revista");
+        estado = "Disponible";
+        cantRevistas++;
+        if (cantRevistas < 10)
+            idRevista = "R-00" + cantRevistas;
+        else if (cantRevistas < 100)
+            idRevista = "R-0" + cantRevistas;
+        else
+            idRevista = "R-" + cantRevistas;
+        if (tipoUso)
             costo = pCosto;
         else
             costo = 0;
@@ -54,8 +68,8 @@ public class Revista {
         return String.valueOf(anho);
     }    
     
-    public boolean getTipo() {
-        return tipo;
+    public boolean getTipoUso() {
+        return tipoUso;
     }
     
     public double getCosto(){
@@ -66,7 +80,10 @@ public class Revista {
         return idRevista;
     }
 
-    public String getEstado(){return  estado;}
+    public String getEstado(){
+        return estado;
+    }
+
     public void setNombre(SimpleStringProperty pNombre) {
         nombre = pNombre;
     }
@@ -79,8 +96,8 @@ public class Revista {
         anho = pAnho;
     }
 
-    public void setTipo(boolean pTipo) {
-        tipo = pTipo;
+    public void setTipoUso(boolean pTipoUso) {
+        tipoUso = pTipoUso;
     }
     
     public void setCosto(double pCosto){
@@ -104,8 +121,9 @@ public class Revista {
         String msj = "Nombre: " + nombre + "\n";
         msj += "Número: " + numero + "\n";
         msj += "Año: " + anho + "\n";
-        msj += "Tipo: ";
-        if (tipo){
+        msj += "Tipo: " + tipo + "\n";
+        msj += "Tipo de revista: ";
+        if (tipoUso){
             msj += "Venta\n";
             msj += "Costo: " + costo + "\n";
         }

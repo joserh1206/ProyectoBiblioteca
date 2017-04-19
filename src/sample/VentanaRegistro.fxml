@@ -25,7 +25,7 @@
             <VBox prefHeight="326.0" prefWidth="141.0" spacing="20.0">
                <children>
                   <Label text="Nombre:" />
-                  <Label text="Nombre de usuario:" />
+                  <Label text="Nombre de cliente:" />
                   <Label text="Correo electrónico:" />
                   <Label text="Cédula:" />
                   <Label text="Teléfono:" />

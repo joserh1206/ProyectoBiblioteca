@@ -1,6 +1,6 @@
 package sample;
 
-import Usuario.Usuario;
+import Usuario.Cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,14 +57,14 @@ public class VentanaRegistroController implements Initializable {
             if (validarEmail()&&validarTelefono()) {
                 Controller.nombre_usuario = regUsuario.getText();
                 Controller.contrasenia_usuario = regcontrasenia.getText();
-                Usuario usuario = new Usuario();
-                usuario.nombre = regNombre.getText();
-                usuario.nombre_usuario = regUsuario.getText();
-                usuario.cedula = regCedula.getText();
-                usuario.contrasenia = regcontrasenia.getText();
-                usuario.correo = regEmail.getText();
-                usuario.telefono = regTelefono.getText();
-                Main.usuarios.add(usuario);
+                Cliente cliente = new Cliente();
+                cliente.nombre = regNombre.getText();
+                cliente.nombre_usuario = regUsuario.getText();
+                cliente.cedula = regCedula.getText();
+                cliente.contrasenia = regcontrasenia.getText();
+                cliente.correo = regEmail.getText();
+                cliente.telefono = regTelefono.getText();
+                Main.clientes.add(cliente);
                 Parent VentanaPrincipal_parent = FXMLLoader.load(getClass().getResource("VentanaPrincipal.fxml"));
                 Scene VentanaPrincipal_scene = new Scene(VentanaPrincipal_parent);
                 Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
