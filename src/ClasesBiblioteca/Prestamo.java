@@ -1,6 +1,8 @@
 package ClasesBiblioteca;
 
 import Usuario.Usuario;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 /**
  * Clase que maneja los préstamos realizados por usuarios
@@ -20,9 +22,8 @@ public class Prestamo {
         libroPrestado = pLibroPrestado;
     }
 
-    public Prestamo(Usuario pUsuario, Revista pRevistaPrestada){
+    public Prestamo(Usuario pUsuario, Revista pRevistaPrestada) {
         usuario = pUsuario;
         revistaPrestada = pRevistaPrestada;
     }
-
 }

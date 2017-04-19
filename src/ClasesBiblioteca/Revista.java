@@ -65,7 +65,8 @@ public class Revista {
     public String getIdRevista(){
         return idRevista;
     }
-    
+
+    public String getEstado(){return  estado;}
     public void setNombre(SimpleStringProperty pNombre) {
         nombre = pNombre;
     }

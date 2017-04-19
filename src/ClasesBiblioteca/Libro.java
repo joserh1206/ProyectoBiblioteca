@@ -65,6 +65,8 @@ public class Libro {
         return idLibro;
     }
 
+    public boolean getEstado() { return estado;}
+
     public void setNombre(SimpleStringProperty pNombre) {
         nombre = pNombre;
     }

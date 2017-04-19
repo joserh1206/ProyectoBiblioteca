@@ -34,7 +34,8 @@ public class EditorExcel {
             archivo = new FileInputStream(arch);    //toma el archivo a modificar
             HSSFWorkbook workbook = new HSSFWorkbook(archivo);  //crea un nuevo libro de trabajo
             HSSFSheet pagLibros = workbook.getSheetAt(0);  //selecciona la página a leer
-            HSSFRow filaActual = null;      //crea una fila, esta va a ser utilizada para recorrer la tabla
+            //HSSFRow filaActual = null;      //crea una fila, esta va a ser utilizada para recorrer la tabla
+            HSSFRow filaActual;
             int filas = pagLibros.getLastRowNum();     //toma la cantidad de filas
             //System.out.println("Filas: " + filas);
 

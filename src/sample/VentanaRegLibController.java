@@ -81,7 +81,7 @@ public class VentanaRegLibController implements Initializable {
                     System.out.println("Error al crear el fichero nuevo" + ioe);
                 }
             }
-            ArrayList<Libro> librosB;//guarda la lista de sismos registrados
+            ArrayList<Libro> librosB;//guarda la lista de libros
             librosB = x.cargar(arch);
             if (VentanaPrincipalController.libros.isEmpty())
                 VentanaPrincipalController.libros.addAll(librosB);

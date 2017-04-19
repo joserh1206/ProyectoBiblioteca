@@ -1,5 +1,6 @@
 package sample;
 
+import ClasesBiblioteca.Prestamo;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -37,7 +39,10 @@ public class VentanaPrincipalController implements Initializable {
     @FXML public TableColumn<ClasesBiblioteca.Libro, String> anioCL;
     @FXML private ChoiceBox<String> estadoCB;
     @FXML private Button bVenta;
+
     public static ObservableList<ClasesBiblioteca.Libro> libros = FXCollections.observableArrayList();
+    public static ObservableList<ClasesBiblioteca.Revista> revistas = FXCollections.observableArrayList();
+    public static ArrayList<ClasesBiblioteca.Prestamo> prestamosRealizados = new ArrayList<ClasesBiblioteca.Prestamo>();
 
     private int posicionLibroEnTabla;
 
