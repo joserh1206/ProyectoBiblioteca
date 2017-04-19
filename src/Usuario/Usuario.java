@@ -25,7 +25,6 @@ public class Usuario {
             total+= multasRegistradas.get(i).getMonto();
         }
         return total;
-
     }
 
     public void pagarMultas(){

@@ -41,6 +41,17 @@ public class VentanaPrestamoVentaController implements Initializable {
         System.out.println("Tendra deudas?");
     }
 
+    public void venderRevista() {
+        if (validarIdRevista())
+            if (validarEstadoRevista()) {
+                for (int i = 0; i < VentanaPrincipalController.revistas.size(); i++) {
+                    if (VentanaPrincipalController.revistas.get(i).getIdRevista() == confirmarBT.getText()) {
+                        VentanaPrincipalController.revistas.remove(i);
+                    }
+                }
+            }
+    }
+
     public void realizarPrestamo(){
         if (validarIdLibro() )
             if (validarEstadoLibro() ) {
@@ -57,6 +68,7 @@ public class VentanaPrestamoVentaController implements Initializable {
                     for (int i = 0; i < VentanaPrincipalController.revistas.size(); i++) {
                         if (VentanaPrincipalController.revistas.get(i).getIdRevista() == confirmarBT.getText()) {
                             VentanaPrincipalController.revistas.get(i).setEstado("Prestada");
+                            System.out.println("Se presta la revista");
                             //Prestamo prestamoActual = new Prestamo(usuario, VentanaPrincipalController.libros.get(i));
                             //VentanaPrincipalController.prestamosRealizados.add(Prestamo);
                         }
