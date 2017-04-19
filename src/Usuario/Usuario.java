@@ -1,5 +1,7 @@
 package Usuario;
 
+import java.util.ArrayList;
+
 /**
  * Clase que crea nuevos usuarios
  * @author Randall Delgado
@@ -15,5 +17,18 @@ public class Usuario {
     public String cedula;
     public String telefono;
     public String contrasenia;
+    public ArrayList<Multa> multasRegistradas;
 
+    public int consultarMultas(){
+        int total = 0;
+        for (int i = 0; i < multasRegistradas.size();i++){
+            total+= multasRegistradas.get(i).getMonto();
+        }
+        return total;
+
+    }
+
+    public void pagarMultas(){
+        multasRegistradas.clear();
+    }
 }
