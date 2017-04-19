@@ -52,14 +52,14 @@ public class VentanaRegistroController implements Initializable {
 
     @FXML
     private void Ingresar(ActionEvent event) throws IOException {
-        if (validarEntrada(regNombre) && validarEntrada(regCedula) && validarEntrada(regcontrasenia)
+        if (validarEntrada(regNombre) && validarEntrada(regUsuario) && validarEntrada(regCedula) && validarEntrada(regcontrasenia)
                 && validarEntrada(regEmail) && validarEntrada(regTelefono)) {
             if (validarEmail()&&validarTelefono()) {
-                Controller.nombre_usuario = regNombre.getText();
+                Controller.nombre_usuario = regUsuario.getText();
                 Controller.contrasenia_usuario = regcontrasenia.getText();
                 Usuario usuario = new Usuario();
-                usuario.nombre = regUsuario.getText();
-                usuario.nombre_usuario = regNombre.getText();
+                usuario.nombre = regNombre.getText();
+                usuario.nombre_usuario = regUsuario.getText();
                 usuario.cedula = regCedula.getText();
                 usuario.contrasenia = regcontrasenia.getText();
                 usuario.correo = regEmail.getText();
