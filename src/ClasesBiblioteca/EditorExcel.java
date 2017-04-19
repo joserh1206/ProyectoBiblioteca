@@ -62,7 +62,7 @@ public class EditorExcel {
                             ID = filaActual.getCell(c).getStringCellValue();
                             if(ID.contains("L"))
                                 tipo = "Libro";
-                            if(ID.contains("R"))
+                            else if(ID.contains("R"))
                                 tipo = "Revista";
                             //System.out.println(ID);
                             break;

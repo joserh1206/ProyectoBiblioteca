@@ -21,11 +21,19 @@ public class Correo {
     private String cuerpo;
     private String destinatario;
     private String asunto;
-    
+
+    /**
+     * Constructor default, crea un nuevo objeto con los datos default
+     */
     public Correo(){
         this("", "");
     }
-    
+
+    /**
+     * Constructor cargado: Crea un objecto con el correo a usarse y la contraseña de dicho correo
+     * @param correo: El correo que enviara los emails
+     * @param password: La contraseña para acceder al correo
+     */
     public Correo(String correo, String password){
         this.correo = correo;
         this.password = password;
@@ -53,8 +61,15 @@ public class Correo {
     public String getCorreo() {
         return correo;
     }
-    
+
+    /**
+     * Metodo enviarCorreo: Realiza el inicio de sesion y luego envia un correo al destinatario que se ha ingresado
+     *
+     * @return valor bool
+     */
+
     public boolean enviarCorreo(){
+
         Properties p = new Properties();
         p.put("mail.smtp.host", "smtp.gmail.com");
         p.put("mail.smtp.socketFactory.port","465");
