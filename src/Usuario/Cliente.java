@@ -38,7 +38,10 @@ public class Cliente {
             total+= multasRegistradas.get(i).getMonto();
         }
         return total;
+    }
 
+    public String getCedula(){
+        return this.cedula;
     }
 
     public void pagarMultas(){

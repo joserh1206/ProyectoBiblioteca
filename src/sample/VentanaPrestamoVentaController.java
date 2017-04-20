@@ -4,6 +4,7 @@ import ClasesBiblioteca.Libro;
 import ClasesBiblioteca.Revista;
 import ClasesBiblioteca.Biblioteca;
 import ClasesBiblioteca.Prestamo;
+import Usuario.Cliente;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,6 +24,7 @@ public class VentanaPrestamoVentaController implements Initializable {
 
     @FXML private Label FechaActualLB;
     @FXML private TextField IDPrestamoLibroTF;
+    @FXML private TextField IDCliente;
     @FXML private Button confirmarBT;
 
     DateFormat dateFormat = DateFormat.getDateInstance();
@@ -33,11 +35,21 @@ public class VentanaPrestamoVentaController implements Initializable {
         FechaActualLB.setText(dateFormat.format(fecha_actual));
     }
 
-    public void validarIDUsuario(){
+    public Cliente validarIDUsuario(){
+        for (int i = 0; i< Main.clientes.size(); i++){
+            if (Main.clientes.get(i).getCedula().equals(IDCliente.getText()))
+                return Main.clientes.get(i);
+        }
+        return null;
+    }
+
+    public void validarPertenecia(){
+        //Se valida que el cliente devuelva un libro que tenga
         System.out.println("Aqui va la validacion de ID");
     }
 
     public void validarDeudas(){
+        //Se busca si tiene una deuda pendiente
         System.out.println("Tendra deudas?");
     }
 
@@ -45,7 +57,7 @@ public class VentanaPrestamoVentaController implements Initializable {
         if (validarIdRevista())
             if (validarEstadoRevista()) {
                 for (int i = 0; i < VentanaPrincipalController.revistas.size(); i++) {
-                    if (VentanaPrincipalController.revistas.get(i).getIdRevista() == confirmarBT.getText()) {
+                    if (VentanaPrincipalController.revistas.get(i).getIdRevista() == IDPrestamoLibroTF.getText()) {
                         VentanaPrincipalController.revistas.remove(i);
                     }
                 }
@@ -53,16 +65,24 @@ public class VentanaPrestamoVentaController implements Initializable {
     }
 
     public void realizarPrestamo(){
-        if (validarIdLibro() )
-            if (validarEstadoLibro() ) {
-                for (int i = 0; i < VentanaPrincipalController.libros.size(); i++) {
-                    if (VentanaPrincipalController.libros.get(i).getIdLibro() == confirmarBT.getText()) {
-                        VentanaPrincipalController.libros.get(i).setEstado(false);
-                        //Prestamo prestamoActual = new Prestamo(usuario, VentanaPrincipalController.libros.get(i));
-                        //VentanaPrincipalController.prestamosRealizados.add(Prestamo);
-                    }
-                }
-            }
+        Cliente solicitante = validarIDUsuario();
+        Libro libroSolicitado = validarIdLibro();
+        if (solicitante == null) {
+            System.out.println("Aqui va una ventana que trata de baka al usuario :)");
+            return;
+        } else if (libroSolicitado == null) {
+            System.out.println("Nope, el libro no existe");
+            return;
+        }
+
+        if (libroSolicitado.estado == true) {
+            libroSolicitado.estado = false;
+            Prestamo prestamoActual = new Prestamo(solicitante, libroSolicitado);
+            VentanaPrincipalController.prestamosRealizados.add(prestamoActual);
+            System.out.println("Se completo el prestamo B)");
+        } else
+            System.out.println("El libro existe, pero no esta disponible :)");
+        /*
         else if (validarIdRevista() )
                 if (validarEstadoRevista() ) {
                     for (int i = 0; i < VentanaPrincipalController.revistas.size(); i++) {
@@ -73,7 +93,7 @@ public class VentanaPrestamoVentaController implements Initializable {
                             //VentanaPrincipalController.prestamosRealizados.add(Prestamo);
                         }
                     }
-                }
+                }*/
     }
 
     public boolean validarEstadoLibro(){
@@ -86,15 +106,12 @@ public class VentanaPrestamoVentaController implements Initializable {
         return false;
     }
 
-    public boolean validarIdLibro(){
+    public Libro validarIdLibro(){
         for (int i = 0; i < VentanaPrincipalController.libros.size(); i++){
-            if (VentanaPrincipalController.libros.get(i).getIdLibro() == confirmarBT.getText()) {
-                System.out.println("El libro existe");
-                return true;
-            }
+            if (VentanaPrincipalController.libros.get(i).getIdLibro().equals(IDPrestamoLibroTF.getText()))
+                return VentanaPrincipalController.libros.get(i);
         }
-        System.out.println();
-        return false;
+        return null;
     }
 
     public boolean validarEstadoRevista(){
@@ -110,22 +127,11 @@ public class VentanaPrestamoVentaController implements Initializable {
     public boolean validarIdRevista(){
         for (int i = 0; i < VentanaPrincipalController.revistas.size(); i++){
             if (VentanaPrincipalController.revistas.get(i).getIdRevista() == confirmarBT.getText()) {
-                System.out.println("El libro existe");
+                System.out.println("La revista existe");
                 return true;
             }
         }
-        System.out.println();
         return false;
     }
-/*
-    public boolean validarIdRevista(){
-        for (int i = 0; i < VentanaPrincipalController. i++){
-            if (VentanaPrincipalController.libros.get(i).getIdLibro() == confirmarBT.getText()) {
-                System.out.println("El libro existe");
-                return true;
-            }
-        }
-        System.out.println();
-        return false;
-    }*/
+
 }
