@@ -58,10 +58,10 @@ public class VentanaPrincipalController implements Initializable {
     @FXML
     public void cambiarFecha(ActionEvent event) throws IOException{
         fechaSistema.set(fecha.getValue().getYear(), fecha.getValue().getMonthValue(), fecha.getValue().getDayOfMonth());
-        mostarFechaSistema();
+        mostrarFechaSistema();
     }
 
-    public void mostarFechaSistema(){
+    public void mostrarFechaSistema(){
         SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
         fechaTF.setText(formato.format(fechaSistema.getTime()));
     }
@@ -173,7 +173,7 @@ public class VentanaPrincipalController implements Initializable {
         estadoCB.setValue("Disponibles");
         estadoCB.setItems(EstadoList);
         //fechaSistema =
-        mostarFechaSistema();
+        mostrarFechaSistema();
 
         // Inicializamos la tabla
         //this.inicializarTablaLibros();
