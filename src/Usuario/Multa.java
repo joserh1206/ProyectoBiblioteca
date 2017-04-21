@@ -25,6 +25,10 @@ public class Multa {
         this.monto = monto;
     }
 
+    public Multa(int monto){
+        this.monto = monto;
+    }
+
     public int getMonto(){
         return monto;
     }

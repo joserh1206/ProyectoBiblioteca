@@ -15,14 +15,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.apache.poi.ss.usermodel.DateUtil;
 
 import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Date;
+import java.util.Calendar;
 
 public class VentanaPrincipalController implements Initializable {
 
@@ -44,6 +48,7 @@ public class VentanaPrincipalController implements Initializable {
     public static ObservableList<Libro> libros = FXCollections.observableArrayList();
     public static ObservableList<Revista> revistas = FXCollections.observableArrayList();
     public static ArrayList<Prestamo> prestamosRealizados = new ArrayList<Prestamo>();
+    public static Calendar fechaSistema = Calendar.getInstance();;
 
     private int posicionLibroEnTabla;
 
@@ -56,13 +61,13 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     public void cambiarFecha(ActionEvent event) throws IOException{
-        fechaTF.setText(String.valueOf(fecha.getValue().getDayOfMonth())+"/"
-                +String.valueOf(fecha.getValue().getMonthValue())+"/"+ String.valueOf(fecha.getValue().getYear()));
+        fechaSistema.set(fecha.getValue().getYear(), fecha.getValue().getMonthValue(), fecha.getValue().getDayOfMonth());
+        mostarFechaSistema();
     }
 
-    public void fechaSistema(){
-        Date fecha_actual = new Date();
-        fechaTF.setText(dateFormat.format(fecha_actual));
+    public void mostarFechaSistema(){
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+        fechaTF.setText(formato.format(fechaSistema.getTime()));
     }
 
     @FXML
@@ -170,8 +175,8 @@ public class VentanaPrincipalController implements Initializable {
         lblUsuario.setText(Controller.nombre_usuario);
         estadoCB.setValue("Disponibles");
         estadoCB.setItems(EstadoList);
-
-        fechaSistema();
+        //fechaSistema =
+        mostarFechaSistema();
 
         // Inicializamos la tabla
         this.inicializarTablaLibros();

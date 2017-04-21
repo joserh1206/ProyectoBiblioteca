@@ -26,15 +26,15 @@
          </font>
       </Label>
       <TextField fx:id="IDPrestamoLibroTF" layoutX="110.0" layoutY="80.0" />
-      <Button fx:id="confirmarBT" layoutX="141.0" layoutY="169.0" mnemonicParsing="false" text="Confirmar" />
-      <RadioButton id="ventaBT" fx:id="VentaRB" layoutX="184.0" layoutY="141.0" mnemonicParsing="false" text="Venta">
+      <Button fx:id="confirmarBT" layoutX="141.0" layoutY="169.0" mnemonicParsing="false" onAction="#terminarAccion" text="Confirmar" />
+      <RadioButton id="ventaBT" fx:id="ventaRB" layoutX="184.0" layoutY="141.0" mnemonicParsing="false" onAction="#validarOperacion" text="Venta">
          <toggleGroup>
             <ToggleGroup fx:id="VentaPrestamo" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton id="prestamoBT" fx:id="PrestamoRB" layoutX="20.0" layoutY="141.0" mnemonicParsing="false" selected="true" text="Prestamo" toggleGroup="$VentaPrestamo" />
-      <Button id="anadirBT" layoutX="55.0" layoutY="169.0" mnemonicParsing="false" onAction="#realizarPrestamo" text="Añadir Otro" />
-      <RadioButton id="prestamoBT" fx:id="DevolucionRB" layoutX="97.0" layoutY="141.0" mnemonicParsing="false" text="Devolución" toggleGroup="$VentaPrestamo" />
+      <RadioButton id="prestamoBT" fx:id="prestamoRB" layoutX="20.0" layoutY="141.0" mnemonicParsing="false" onAction="#validarOperacion" text="Prestamo" toggleGroup="$VentaPrestamo" />
+      <Button id="anadirBT" layoutX="55.0" layoutY="169.0" mnemonicParsing="false" onAction="#realizarAccion" text="Añadir Otro" />
+      <RadioButton id="prestamoBT" fx:id="devolucionRB" layoutX="97.0" layoutY="141.0" mnemonicParsing="false" onAction="#validarOperacion" text="Devolución" toggleGroup="$VentaPrestamo" />
       <Label layoutX="24.0" layoutY="48.0" prefHeight="21.0" prefWidth="79.0" text="ID Usuario:">
          <font>
             <Font size="15.0" />

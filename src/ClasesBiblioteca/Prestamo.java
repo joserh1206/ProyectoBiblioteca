@@ -1,6 +1,9 @@
 package ClasesBiblioteca;
 
+//import java.text.DateFormat;
 import Usuario.Cliente;
+
+import java.util.Calendar;
 
 /**
  * Clase que maneja los préstamos realizados por clientes
@@ -14,14 +17,19 @@ public class Prestamo {
     public Libro libroPrestado;
     public Revista revistaPrestada;
     public Cliente cliente;
+    public Calendar fechaLimite;
 
-    public Prestamo(Cliente pCliente, Libro pLibroPrestado){
+    public Prestamo(Cliente pCliente, Libro pLibroPrestado, Calendar pfechaLimite){
         cliente = pCliente;
         libroPrestado = pLibroPrestado;
+        fechaLimite = pfechaLimite;
+        revistaPrestada = null;
     }
 
-    public Prestamo(Cliente pCliente, Revista pRevistaPrestada) {
+    public Prestamo(Cliente pCliente, Revista pRevistaPrestada, Calendar pfechaLimite) {
         cliente = pCliente;
         revistaPrestada = pRevistaPrestada;
+        fechaLimite = pfechaLimite;
+        libroPrestado = null;
     }
 }
