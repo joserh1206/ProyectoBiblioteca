@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.VentanaConsultaMultasClienteController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.VentanaConsultaMultasClienteController">
    <children>
-      <TableView fx:id="TablaMultas" prefHeight="300.0" prefWidth="545.0">
+      <TableView fx:id="TablaMultas" layoutY="39.0" prefHeight="261.0" prefWidth="545.0">
         <columns>
           <TableColumn fx:id="IDMultas" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="NombreMultas" prefWidth="75.0" text="Nombre" />
@@ -17,5 +22,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Button fx:id="consultarBT" layoutX="348.0" layoutY="13.0" mnemonicParsing="false" text="Consultar" />
+      <Label layoutX="130.0" layoutY="17.0" text="ID Cliente:" />
+      <TextField fx:id="IDClienteTF" layoutX="189.0" layoutY="13.0" />
    </children>
 </AnchorPane>

@@ -130,10 +130,11 @@ public class VentanaPrestamoVentaController implements Initializable {
 
     public boolean cuentaConMultas(Cliente solicitante){
         //Se busca si tiene una deuda pendiente
-        if (solicitante.multasRegistradas.size() == 0)
-            return false;
-        else
-            return true;
+        for(int i = 0; i<solicitante.multasRegistradas.size(); i++) {
+            if (solicitante.multasRegistradas.get(i).cancelado == false)
+                return false;
+        }
+        return true;
     }
 
     void terminarPrestamo(){
@@ -172,9 +173,7 @@ public class VentanaPrestamoVentaController implements Initializable {
         if (prestamo == null){
             System.out.println("No se encontro el prestamo");
             return;
-        } /*else if (VentanaPrincipalController.fechaSistema.after(prestamo.fechaLimite)){
-            crearMulta(solicitante, prestamo.fechaLimite);
-        }*/
+        }
 
         devoluciones.add(prestamo);
 
@@ -184,19 +183,23 @@ public class VentanaPrestamoVentaController implements Initializable {
         System.out.println(devoluciones.size());
 
         for (int i = 0; i < devoluciones.size() ;i++){
-            if (devoluciones.get(i).libroPrestado != null)
+            if (devoluciones.get(i).libroPrestado != null) {
                 devoluciones.get(i).libroPrestado.setEstado(true);
-            else
+                if (VentanaPrincipalController.fechaSistema.after(devoluciones.get(i).fechaLimite)) //Si el cliente se atraso con la devolución
+                    crearMulta(devoluciones.get(i).cliente,devoluciones.get(i).libroPrestado.getNombre(), devoluciones.get(i).libroPrestado.idLibro, devoluciones.get(i).fechaLimite);
+            } else {
                 devoluciones.get(i).revistaPrestada.setEstado("Disponible");
-            if (VentanaPrincipalController.fechaSistema.after(devoluciones.get(i).fechaLimite)) //Si el cliente se atraso con la devolución
-                crearMulta(devoluciones.get(i).cliente, devoluciones.get(i).fechaLimite);
+                if (VentanaPrincipalController.fechaSistema.after(devoluciones.get(i).fechaLimite)) //Si el cliente se atraso con la devolución
+                    crearMulta(devoluciones.get(i).cliente,devoluciones.get(i).revistaPrestada.getNombre(), devoluciones.get(i).revistaPrestada.idRevista, devoluciones.get(i).fechaLimite);
+            }
+
             VentanaPrincipalController.prestamosRealizados.remove(devoluciones.get(i)); //Se elimina el prestamo del sistema
+            devoluciones.get(i).devuelto = true;
+            VentanaPrincipalController.prestamosRealizados.add(0, devoluciones.get(i)); //Se guarda como devuelto
         }
-
-
     }
 
-    public void crearMulta(Cliente solicitante, Calendar fechaLimite){
+    public void crearMulta(Cliente solicitante, String nombre, String ID, Calendar fechaLimite){
         int dias = 0;
 
         while (VentanaPrincipalController.fechaSistema.after(fechaLimite)) {
@@ -204,7 +207,7 @@ public class VentanaPrestamoVentaController implements Initializable {
             dias++;
         }
 
-        solicitante.multasRegistradas.add(new Multa(dias*500));
+        solicitante.multasRegistradas.add(new Multa(nombre, ID, dias));
     }
 
 

@@ -18,12 +18,14 @@ public class Prestamo {
     public Revista revistaPrestada;
     public Cliente cliente;
     public Calendar fechaLimite;
+    public boolean devuelto;
 
     public Prestamo(Cliente pCliente, Libro pLibroPrestado, Calendar pfechaLimite){
         cliente = pCliente;
         libroPrestado = pLibroPrestado;
         fechaLimite = pfechaLimite;
         revistaPrestada = null;
+        devuelto = false;
     }
 
     public Prestamo(Cliente pCliente, Revista pRevistaPrestada, Calendar pfechaLimite) {
@@ -31,5 +33,6 @@ public class Prestamo {
         revistaPrestada = pRevistaPrestada;
         fechaLimite = pfechaLimite;
         libroPrestado = null;
+        devuelto = false;
     }
 }

@@ -22,7 +22,7 @@ public class Usuario {
     public int consultarMultas(){
         int total = 0;
         for (int i = 0; i < multasRegistradas.size();i++){
-            total+= multasRegistradas.get(i).getMonto();
+            total+= multasRegistradas.get(i).montoColones;
         }
         return total;
     }
