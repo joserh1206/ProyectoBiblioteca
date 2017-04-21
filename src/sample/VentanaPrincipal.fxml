@@ -54,7 +54,7 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Button fx:id="bCerrarSesion" layoutX="534.0" layoutY="151.0" mnemonicParsing="false" text="Cerrar Sesión" />
+      <Button fx:id="bRegistrarCliente" layoutX="534.0" layoutY="151.0" mnemonicParsing="false" onAction="#AbrirRegistroCliente" text="Registrar Cliente" />
       <Label layoutX="228.0" layoutY="13.0" prefHeight="28.0" prefWidth="184.0" text="Filtros de Búsqueda">
          <font>
             <Font size="19.0" />

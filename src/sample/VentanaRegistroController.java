@@ -65,12 +65,8 @@ public class VentanaRegistroController implements Initializable {
                 cliente.correo = regEmail.getText();
                 cliente.telefono = regTelefono.getText();
                 Main.clientes.add(cliente);
-                Parent VentanaPrincipal_parent = FXMLLoader.load(getClass().getResource("VentanaPrincipal.fxml"));
-                Scene VentanaPrincipal_scene = new Scene(VentanaPrincipal_parent);
                 Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                app_stage.hide();
-                app_stage.setScene(VentanaPrincipal_scene);
-                app_stage.show();
+                app_stage.close();
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
