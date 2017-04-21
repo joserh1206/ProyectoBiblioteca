@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -43,7 +44,9 @@ public class VentanaPrestamoVentaController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Date fecha_actual = new Date();
-        FechaActualLB.setText(dateFormat.format(fecha_actual));
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+        FechaActualLB.setText(formato.format(VentanaPrincipalController.fechaSistema.getTime()));
+
         librosIngresados = new ArrayList<Libro>();
         revistasIngresadas = new ArrayList<Revista>();
         devoluciones = new ArrayList<Prestamo>();
@@ -210,7 +213,7 @@ public class VentanaPrestamoVentaController implements Initializable {
         for(int i = 0; i<VentanaPrincipalController.prestamosRealizados.size() ;i++){
             if (VentanaPrincipalController.prestamosRealizados.get(i).cliente == cliente) {
                 if (VentanaPrincipalController.prestamosRealizados.get(i).libroPrestado == libro)
-                    VentanaPrincipalController.prestamosRealizados.get(i);
+                    return VentanaPrincipalController.prestamosRealizados.get(i);
             }
         }
         return null;
