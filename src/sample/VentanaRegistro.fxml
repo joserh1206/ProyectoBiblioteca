@@ -69,7 +69,7 @@
             <HBox VBox.vgrow="ALWAYS">
                <children>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" onAction="#Cancelar" text="Cancelar">
+                  <Button mnemonicParsing="false" text="Cancelar">
                      <HBox.margin>
                         <Insets bottom="10.0" right="20.0" />
                      </HBox.margin>
