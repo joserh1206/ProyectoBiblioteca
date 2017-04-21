@@ -13,20 +13,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import org.apache.poi.ss.usermodel.DateUtil;
 
 import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Date;
-import java.util.Calendar;
 
 public class VentanaPrincipalController implements Initializable {
 
@@ -160,6 +156,7 @@ public class VentanaPrincipalController implements Initializable {
     /**
      * Método para inicializar la tabla
      */
+    /*
     public void inicializarTablaLibros() {
         nombreCL.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         autorCL.setCellValueFactory(new PropertyValueFactory<>("autor"));
@@ -169,7 +166,7 @@ public class VentanaPrincipalController implements Initializable {
         tipoCL.setCellValueFactory(new PropertyValueFactory<>("tipo"));
         tablaLibro.setItems(getLibros());
     }
-
+*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lblUsuario.setText(Controller.nombre_usuario);
@@ -179,10 +176,10 @@ public class VentanaPrincipalController implements Initializable {
         mostarFechaSistema();
 
         // Inicializamos la tabla
-        this.inicializarTablaLibros();
+        //this.inicializarTablaLibros();
 
         // Seleccionar las tuplas de la tabla de las personas
-        final ObservableList<ClasesBiblioteca.Libro> tablaPersonaSel = tablaLibro.getSelectionModel().getSelectedItems();
-        tablaPersonaSel.addListener(selectorTablaLibros);
+/*        final ObservableList<ClasesBiblioteca.Libro> tablaPersonaSel = tablaLibro.getSelectionModel().getSelectedItems();
+        tablaPersonaSel.addListener(selectorTablaLibros);*/
     }
 }
