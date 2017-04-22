@@ -3,6 +3,8 @@ package Usuario;
 import ClasesBiblioteca.Revista;
 import ClasesBiblioteca.Libro;
 
+import javax.management.StringValueExp;
+
 /**
  * Clase que crea las multas de los clientes
  * @author Randall Delgado
@@ -11,30 +13,27 @@ import ClasesBiblioteca.Libro;
  */
 
 public class Multa {
-    public Libro libro;
-    public Revista revista;
-    public int monto;
+    public String nombre;
+    public String ID;
+    public int diasAtraso;
+    public int montoColones;
+    public int montoDolares;
+    public boolean cancelado;
 
-    public Multa(Libro libro, int monto){
-        this.libro = libro;
-        this.monto = monto;
-    }
-
-    public Multa(Revista revista, int monto){
-        this.revista = revista;
-        this.monto = monto;
-    }
-
-    public Multa(int monto){
-        this.monto = monto;
-    }
-
-    public int getMonto(){
-        return monto;
+    public Multa(String nombre, String ID, int diasAtraso){
+        this.diasAtraso = diasAtraso;
+        this.nombre = nombre;
+        this.ID = ID;
+        this.montoColones = 500 * diasAtraso;
+        this.montoDolares = diasAtraso;
+        cancelado = false;
     }
 
     public String toString(){
-        String msj = "Monto a pagar: " + monto + "\n";
+        String msj = "El monto a pagar en colones: " + montoColones + "\n"
+                + ", y en dolares: " + this.montoDolares + ". Por "+
+                "El articulo " + this.nombre + ", ID: " + this.ID;
+
         System.out.println(msj);
         return msj;
     }

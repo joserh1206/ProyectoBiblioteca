@@ -1,9 +1,12 @@
 package Controladores;
 
+import Usuario.Cliente;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -22,9 +25,12 @@ public class VentanaConsultaMultasClienteController implements Initializable {
     @FXML public TableColumn<ClasesBiblioteca.Libro, String> MDolaresMultas;
     @FXML public TableColumn<ClasesBiblioteca.Libro, String> EstadoMultas;
 
+    @FXML public Button consularBT;
+    @FXML public TextField IDClienteTF;
 
-    public void inicializarTablaLibros() {
-        IDMultas.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+    public void inicializarTablaMultas() {
+        //Ehm.. what?
+        IDMultas.setCellValueFactory(new PropertyValueFactory<>("nombrenononono"));
         NombreMultas.setCellValueFactory(new PropertyValueFactory<>("autor"));
         DAtrasoMultas.setCellValueFactory(new PropertyValueFactory<>("editorial"));
         MColonesMultas.setCellValueFactory(new PropertyValueFactory<>("genero"));
@@ -35,7 +41,27 @@ public class VentanaConsultaMultasClienteController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        inicializarTablaMultas();
+        System.out.println("Hola mundo");
+    }
 
+    public void realizarConsulta(){
+        Cliente solicitante = obtenerUsuario();
+        if (solicitante == null){
+            System.out.println("No existe ese wey");
+        }
+
+        for (int i = 0; i< solicitante.multasRegistradas.size(); i++){
+
+        }
+    }
+
+    public Cliente obtenerUsuario(){
+        for (int i = 0; i< Main.clientes.size(); i++){
+            if (Main.clientes.get(i).getCedula().equals(IDClienteTF.getText()))
+                return Main.clientes.get(i);
+        }
+        return null;
     }
 
 
