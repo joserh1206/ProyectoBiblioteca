@@ -16,6 +16,7 @@ public class Cliente {
     public String correo;
     public String cedula;
     public String telefono;
+    public String contrasenia;
     public ArrayList<Multa> multasRegistradas;
 
     public Cliente(){
@@ -29,6 +30,7 @@ public class Cliente {
         cedula = pCedula;
         telefono = pTelefono;
         multasRegistradas = new ArrayList<Multa>();
+
     }
 
     public String getCedula(){
