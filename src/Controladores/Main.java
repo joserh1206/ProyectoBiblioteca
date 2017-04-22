@@ -29,7 +29,7 @@ public class Main extends Application {
 
         clientes.add(u);
         clientes.add(o);
-        Parent root = FXMLLoader.load(getClass().getResource("../FXML/VentanaPrincipal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../FXML/VentanaRegistroBiblioteca.fxml"));
         primaryStage.setTitle("Biblioteca");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
