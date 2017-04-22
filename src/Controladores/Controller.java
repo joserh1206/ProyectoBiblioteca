@@ -1,4 +1,4 @@
-package sample;
+package Controladores;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,7 +52,7 @@ public class Controller implements Initializable {
         contrasenia_usuario = password.getText();
         if (BuscarUsuario(nombre_usuario)) {
             if (BuscarContrasenia(contrasenia_usuario)) {
-                Parent VentanaPrincipal_parent = FXMLLoader.load(getClass().getResource("VentanaPrincipal.fxml"));
+                Parent VentanaPrincipal_parent = FXMLLoader.load(getClass().getResource("../FXML/VentanaPrincipal.fxml"));
                 Scene VentanaPrincipal_scene = new Scene(VentanaPrincipal_parent);
                 Stage app_stage;
                 app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -79,7 +79,7 @@ public class Controller implements Initializable {
 
     @FXML
     private void Registrarse(ActionEvent event) throws IOException {
-        Parent VentanaRegistro_parent = FXMLLoader.load(getClass().getResource("VentanaRegistro.fxml"));
+        Parent VentanaRegistro_parent = FXMLLoader.load(getClass().getResource("../FXML/VentanaRegistro.fxml"));
         Scene VentanaRegistro_scene = new Scene(VentanaRegistro_parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         app_stage.hide();

@@ -1,4 +1,4 @@
-package sample;
+package Controladores;
 
 import ClasesBiblioteca.Libro;
 import ClasesBiblioteca.Prestamo;
@@ -62,13 +62,13 @@ public class VentanaPrincipalController implements Initializable {
     }
 
     public void mostarFechaSistema(){
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         fechaTF.setText(formato.format(fechaSistema.getTime()));
     }
 
     @FXML
     private void AbrirRegistroLibros (ActionEvent event) throws IOException{
-        FXMLLoader fxmlL = new FXMLLoader(getClass().getResource("VentanaRegistroLibros.fxml"));
+        FXMLLoader fxmlL = new FXMLLoader(getClass().getResource("../FXML/VentanaRegistroLibros.fxml"));
         Parent rootl = (Parent)fxmlL.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(rootl));
@@ -79,7 +79,7 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private void AbrirPrestamoLibros (ActionEvent event) throws IOException{
-        FXMLLoader fxmlL = new FXMLLoader(getClass().getResource("VentanaPrestamoVenta.fxml"));
+        FXMLLoader fxmlL = new FXMLLoader(getClass().getResource("../FXML/VentanaPrestamoVenta.fxml"));
         Parent rootl = (Parent)fxmlL.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(rootl));
@@ -90,7 +90,7 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private void AbrirDeudasCliente (ActionEvent event) throws IOException{
-        FXMLLoader fxmlL = new FXMLLoader(getClass().getResource("VentanaMultasCliente.fxml"));
+        FXMLLoader fxmlL = new FXMLLoader(getClass().getResource("../FXML/VentanaMultasCliente.fxml"));
         Parent rootl = fxmlL.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(rootl));
@@ -101,7 +101,7 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private void AbrirRegistroCliente (ActionEvent event) throws IOException{
-        FXMLLoader fxmlL = new FXMLLoader(getClass().getResource("VentanaRegistro.fxml"));
+        FXMLLoader fxmlL = new FXMLLoader(getClass().getResource("../FXML/VentanaRegistro.fxml"));
         Parent rootl = fxmlL.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(rootl));

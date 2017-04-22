@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="718.0" stylesheets="@ThemeVentPrincipal.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.VentanaPrincipalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="718.0" stylesheets="@../Themes/ThemeVentPrincipal.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.VentanaPrincipalController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="513.0" layoutX="512.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" width="218.0" />
       <Label layoutX="532.0" layoutY="49.0" text="Usuario: ">
@@ -20,7 +20,7 @@
       <Button fx:id="bPrestamo" layoutX="534.0" layoutY="75.0" mnemonicParsing="false" onAction="#AbrirPrestamoLibros" text="Venta/Préstamo/Devolución" />
       <ImageView fitHeight="167.0" fitWidth="166.0" layoutX="9.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@librosPortada.png" />
+            <Image url="@../Imagenes/librosPortada.png" />
          </image>
       </ImageView>
       <DatePicker fx:id="fecha" layoutX="532.0" layoutY="14.0" onAction="#cambiarFecha" AnchorPane.topAnchor="14.0" />
@@ -28,9 +28,12 @@
       <Button fx:id="consultarDeudasBT" layoutX="534.0" layoutY="114.0" mnemonicParsing="false" onAction="#AbrirDeudasCliente" text="Consultar Deudas" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff2b00" height="31.0" layoutX="-7.0" layoutY="491.0" stroke="BLACK" strokeType="INSIDE" width="738.0" />
       <Button layoutX="15.0" layoutY="189.0" mnemonicParsing="false" text="Calcular Multas Totales" />
-      <RadioButton layoutX="230.0" layoutY="79.0" mnemonicParsing="false" text="Revistas" />
-      <RadioButton layoutX="325.0" layoutY="79.0" mnemonicParsing="false" text="Libros" />
-      <RadioButton layoutX="409.0" layoutY="79.0" mnemonicParsing="false" text="Todos" />
+      <RadioButton layoutX="230.0" layoutY="79.0" mnemonicParsing="false" text="Revistas">
+         <toggleGroup>
+            <ToggleGroup fx:id="Mostrar" />
+         </toggleGroup></RadioButton>
+      <RadioButton layoutX="325.0" layoutY="79.0" mnemonicParsing="false" text="Libros" toggleGroup="$Mostrar" />
+      <RadioButton layoutX="409.0" layoutY="79.0" mnemonicParsing="false" text="Todos" toggleGroup="$Mostrar" />
       <Label layoutX="228.0" layoutY="47.0" text="Mostrar">
          <font>
             <Font size="16.0" />

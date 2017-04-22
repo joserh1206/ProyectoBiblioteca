@@ -1,4 +1,4 @@
-package sample;
+package Controladores;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

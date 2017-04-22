@@ -1,4 +1,4 @@
-package sample;
+package Controladores;
 
 import Usuario.Cliente;
 import javafx.event.ActionEvent;
@@ -79,7 +79,7 @@ public class VentanaRegistroController implements Initializable {
 
     @FXML
     private void Cancelar(ActionEvent event) throws IOException {
-        Parent VentanaPrincipal_parent = FXMLLoader.load(getClass().getResource("VentanaPrincipal.fxml"));
+        Parent VentanaPrincipal_parent = FXMLLoader.load(getClass().getResource("../FXML/VentanaPrincipal.fxml"));
         Scene VentanaPrincipal_scene = new Scene(VentanaPrincipal_parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         app_stage.hide();

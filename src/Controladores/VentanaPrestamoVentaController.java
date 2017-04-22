@@ -1,11 +1,9 @@
-package sample;
+package Controladores;
 
 import ClasesBiblioteca.Libro;
-import ClasesBiblioteca.Revista;
-import ClasesBiblioteca.Biblioteca;
 import ClasesBiblioteca.Prestamo;
+import ClasesBiblioteca.Revista;
 import Usuario.Cliente;
-
 import Usuario.Multa;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

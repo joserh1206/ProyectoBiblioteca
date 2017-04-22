@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="368.0" prefWidth="533.0" stylesheets="@ThemeReg.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.VentanaRegistroController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="368.0" prefWidth="533.0" stylesheets="@../Themes/ThemeReg.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.VentanaRegistroController">
    <top>
       <Label text="Regístrate! Es gratis y siempre lo será" BorderPane.alignment="CENTER">
          <font>
@@ -95,7 +95,7 @@
             </Label>
             <ImageView fx:id="imagenP" fitHeight="107.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@perfil.jpg" />
+                  <Image url="@../Imagenes/perfil.jpg" />
                </image>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
