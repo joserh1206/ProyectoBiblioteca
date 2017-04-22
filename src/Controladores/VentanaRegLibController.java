@@ -6,6 +6,7 @@ package Controladores;
 
 import ClasesBiblioteca.EditorExcel;
 import ClasesBiblioteca.Libro;
+import ClasesBiblioteca.Revista;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +24,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import static ClasesBiblioteca.Libro.cantLibros;
 
 
 public class VentanaRegLibController implements Initializable {
@@ -46,33 +48,74 @@ public class VentanaRegLibController implements Initializable {
 
     @FXML
     private void registrar2(ActionEvent event) throws IOException {
+        String idLibro;
         if (rbManual.isSelected()) {
-            ClasesBiblioteca.Libro libro = new ClasesBiblioteca.Libro();
-            libro.nombre.set(nombreTF.getText());
-            libro.autor.set(autorTF.getText());
-            libro.editorial.set(editorialTF.getText());
-            libro.anho.set(anioTF.getText());
-            libro.genero.set(generoCB.getValue());
-            if (libroRB.isSelected())
-                libro.tipo.set(libroRB.getText());
-            if (revistaRB.isSelected())
-                libro.tipo.set(revistaRB.getText());
-            if (VentanaPrincipalController.libros.isEmpty())
-                VentanaPrincipalController.libros.add(libro);
-            else {
-                int flagIguales = 0;
-                for (int i = 0; i < VentanaPrincipalController.libros.size(); i++) {
-                    Libro l = VentanaPrincipalController.libros.get(i);
-                    if (l.nombre.get().equals(libro.nombre.get()) && l.autor.get().equals(libro.autor.get()) && l.anho.get().equals(libro.anho.get()) && l.editorial.get().equals(libro.editorial.get()) && l.genero.get().equals(libro.genero.get())) {
-                        flagIguales++;
-                        break;
-                    }
-                }
-                if (flagIguales == 0)
+            if (libroRB.isSelected()) {
+                ClasesBiblioteca.Libro libro = new ClasesBiblioteca.Libro();
+                libro.nombre.set(nombreTF.getText());
+                libro.autor.set(autorTF.getText());
+                libro.editorial.set(editorialTF.getText());
+                libro.anho.set(anioTF.getText());
+                libro.genero.set(generoCB.getValue());
+                cantLibros++;
+                if (cantLibros < 10)
+                    idLibro = "L-00" + cantLibros;
+                else if (cantLibros < 100)
+                    idLibro = "L-0" + cantLibros;
+                else
+                    idLibro = "L-" + cantLibros;
+                libro.id.set(idLibro);
+                if (VentanaPrincipalController.libros.isEmpty())
                     VentanaPrincipalController.libros.add(libro);
+                else {
+                    int flagIguales = 0;
+                    for (int i = 0; i < VentanaPrincipalController.libros.size(); i++) {
+                        Libro l = VentanaPrincipalController.libros.get(i);
+                        if (l.nombre.get().equals(libro.nombre.get()) && l.autor.get().equals(libro.autor.get()) &&
+                                l.anho.get().equals(libro.anho.get()) && l.editorial.get().equals(libro.editorial.get())
+                                && l.genero.get().equals(libro.genero.get())) {
+                            flagIguales++;
+                            break;
+                        }
+                    }
+                    if (flagIguales == 0)
+                        VentanaPrincipalController.libros.add(libro);
+                }
+                Stage stage = (Stage) registrarBT.getScene().getWindow();
+                stage.close();
             }
-            Stage stage = (Stage) registrarBT.getScene().getWindow();
-            stage.close();
+            else{
+                ClasesBiblioteca.Revista revista = new ClasesBiblioteca.Revista();
+                revista.nombreR.set(nombreTF.getText());
+                revista.Tipo.set(venpresCB.getValue());
+                revista.Costo.set(Double.parseDouble(precioTF.getText()));
+                revista.anhoR.set(anioTF.getText());
+                cantLibros++;
+                if (cantLibros < 10)
+                    revista.ID.set("L-00" + Libro.cantLibros);
+                else if (cantLibros < 100)
+                    revista.ID.set("L-0" + Libro.cantLibros);
+                else
+                    revista.ID.set("L-" + Libro.cantLibros);
+
+                if (VentanaPrincipalController.revistas.isEmpty())
+                    VentanaPrincipalController.revistas.add(revista);
+                else {
+                    int flagIguales = 0;
+                    for (int i = 0; i < VentanaPrincipalController.revistas.size(); i++) {
+                        Revista l = VentanaPrincipalController.revistas.get(i);
+                        if (l.nombreR.get().equals(revista.nombreR.get()) && l.Tipo.get().equals(revista.Tipo.get()) &&
+                                l.anhoR.get().equals(revista.anhoR.get())) {
+                            flagIguales++;
+                            break;
+                        }
+                    }
+                    if (flagIguales == 0)
+                        VentanaPrincipalController.revistas.add(revista);
+                }
+                Stage stage = (Stage) registrarBT.getScene().getWindow();
+                stage.close();
+            }
         }
         else{
             File arch = new File("LibrosAutom.xls");

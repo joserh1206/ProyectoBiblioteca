@@ -53,38 +53,38 @@
       <ChoiceBox fx:id="estadoCB" layoutX="230.0" layoutY="126.0" prefWidth="150.0" />
       <Label layoutX="228.0" layoutY="171.0" text="Fecha actual del sistema:" />
       <Label fx:id="fechaTF" layoutX="366.0" layoutY="171.0" />
-      <TabPane layoutX="15.0" layoutY="271.0" prefHeight="209.0" prefWidth="496.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="BDTP" layoutX="15.0" layoutY="271.0" prefHeight="209.0" prefWidth="496.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Libros">
+          <Tab fx:id="TabLibros" text="Libros">
             <content>
               <AnchorPane>
                      <children>
-                        <TableView layoutY="-3.0" prefHeight="395.0" prefWidth="501.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="TVLibros" layoutY="-3.0" prefHeight="395.0" prefWidth="501.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="ID" />
-                            <TableColumn prefWidth="116.0" text="Nombre" />
-                              <TableColumn prefWidth="77.0" text="Autor" />
-                              <TableColumn prefWidth="62.0" text="Año" />
-                              <TableColumn prefWidth="90.0" text="Editorial" />
-                              <TableColumn prefWidth="79.0" text="Género" />
+                            <TableColumn fx:id="IDLibros" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="NombreLibros" prefWidth="116.0" text="Nombre" />
+                              <TableColumn fx:id="AutorLibros" prefWidth="77.0" text="Autor" />
+                              <TableColumn fx:id="AnioLibros" prefWidth="62.0" text="Año" />
+                              <TableColumn fx:id="EditorialLibros" prefWidth="90.0" text="Editorial" />
+                              <TableColumn fx:id="GeneroLibros" prefWidth="79.0" text="Género" />
                           </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Revistas">
+          <Tab fx:id="TabRevistas" text="Revistas">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="14.0" layoutY="-14.0" prefHeight="171.0" prefWidth="697.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="TVRevistas" layoutX="14.0" layoutY="-14.0" prefHeight="171.0" prefWidth="697.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="ID" />
-                            <TableColumn prefWidth="125.0" text="Nombre" />
-                              <TableColumn prefWidth="68.0" text=" Numero" />
-                              <TableColumn prefWidth="60.0" text="Año" />
-                              <TableColumn prefWidth="83.0" text="Genero" />
-                              <TableColumn prefWidth="87.0" text="Costo" />
+                            <TableColumn fx:id="IDRevistas" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="NombreRevistas" prefWidth="125.0" text="Nombre" />
+                              <TableColumn fx:id="NumeroRevistas" prefWidth="68.0" text=" Numero" />
+                              <TableColumn fx:id="AnioRevistas" prefWidth="60.0" text="Año" />
+                              <TableColumn fx:id="TipoRevistas" prefWidth="83.0" text="Tipo" />
+                              <TableColumn fx:id="CostoRevistas" prefWidth="87.0" text="Costo" />
                           </columns>
                         </TableView>
                      </children></AnchorPane>

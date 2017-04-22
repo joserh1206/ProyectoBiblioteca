@@ -19,9 +19,10 @@ public class Libro {
     public SimpleStringProperty autor = new SimpleStringProperty();
     public SimpleStringProperty anho = new SimpleStringProperty();
     public SimpleStringProperty editorial = new SimpleStringProperty();
-    public SimpleStringProperty tipo = new SimpleStringProperty();
+    //public SimpleStringProperty tipo = new SimpleStringProperty();
     public SimpleStringProperty genero = new SimpleStringProperty();
-    private static int cantLibros = 0;
+    public static int cantLibros = 0;
+    public SimpleStringProperty id = new SimpleStringProperty();
     public String idLibro;
     public boolean estado; //true = disponible; false = prestado
     public static int diasDePrestamo = 10;
@@ -35,7 +36,8 @@ public class Libro {
         else
             idLibro = "L-" + cantLibros;
         estado = true;
-        tipo.set("Libro");
+        id.set(idLibro);
+        //tipo.set("Libro");
     }
 
     public Libro(String nombre, String autor, String anho, String editorial, String genero){
@@ -43,7 +45,7 @@ public class Libro {
         this.autor.set(autor);
         this.anho.set(anho);
         this.editorial.set(editorial);
-        tipo.set("Libro");
+        //tipo.set("Libro");
         this.genero.set(genero);
         cantLibros++;
         if (cantLibros < 10)
@@ -53,6 +55,7 @@ public class Libro {
         else
             idLibro = "L-" + cantLibros;
         estado = true;
+        id.set(idLibro);
     }
 
     public String getGenero() {
@@ -74,11 +77,11 @@ public class Libro {
     public String getEditorial() {
         return editorial.get();
     }    
-    
+    /*
     public String getTipo() {
         return tipo.get();
     }
-    
+    */
     public String getIdLibro(){
         return idLibro;
     }
@@ -105,9 +108,9 @@ public class Libro {
         this.genero = genero;
     }
 
-    public void setTipo(SimpleStringProperty pTipo) {
+    /*public void setTipo(SimpleStringProperty pTipo) {
         tipo = pTipo;
-    }
+    }*/
     
     public void setIdLibro(String pIdLibro){
         idLibro = pIdLibro;
@@ -129,7 +132,7 @@ public class Libro {
         msj += "Autor: " + autor.get() + "\n";
         msj += "Año: " + anho.get() + "\n";
         msj += "Editorial: " + editorial.get() + "\n";
-        msj += "Tipo: " + tipo.get() + "\n";
+        //msj += "Tipo: " + tipo.get() + "\n";
         msj += "Género: " + genero.get() + "\n";
         msj += "ID: " + idLibro + "\n";
         msj += "Estado: ";

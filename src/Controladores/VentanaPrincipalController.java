@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,13 +32,24 @@ public class VentanaPrincipalController implements Initializable {
 
     ObservableList<String> EstadoList = FXCollections.observableArrayList("Disponibles", "Vendidos", "Prestados");
 
-    @FXML public TableView<ClasesBiblioteca.Libro> tablaLibro;
-    @FXML public TableColumn<ClasesBiblioteca.Libro, String> tipoCL;
-    @FXML public TableColumn<ClasesBiblioteca.Libro, String> nombreCL;
-    @FXML public TableColumn<ClasesBiblioteca.Libro, String> autorCL;
-    @FXML public TableColumn<ClasesBiblioteca.Libro, String> editorialCL;
-    @FXML public TableColumn<ClasesBiblioteca.Libro, String> generoCL;
-    @FXML public TableColumn<ClasesBiblioteca.Libro, String> anioCL;
+    @FXML public TabPane BDTP;
+    @FXML public Tab TabLibros;
+    @FXML public Tab TabRevistas;
+    @FXML public TableView<ClasesBiblioteca.Libro> TVLibros;
+    @FXML public TableColumn<ClasesBiblioteca.Libro, String> IDLibros;
+    @FXML public TableColumn<ClasesBiblioteca.Libro, String> NombreLibros;
+    @FXML public TableColumn<ClasesBiblioteca.Libro, String> AutorLibros;
+    @FXML public TableColumn<ClasesBiblioteca.Libro, String> AnioLibros;
+    @FXML public TableColumn<ClasesBiblioteca.Libro, String> EditorialLibros;
+    @FXML public TableColumn<ClasesBiblioteca.Libro, String> GeneroLibros;
+    //-----------------------------------------------------------------------
+    @FXML public TableView<ClasesBiblioteca.Revista> TVRevistas;
+    @FXML public TableColumn<ClasesBiblioteca.Revista, String> IDRevistas;
+    @FXML public TableColumn<ClasesBiblioteca.Revista, String> NombreRevistas;
+    @FXML public TableColumn<ClasesBiblioteca.Revista, Integer> NumeroRevistas;
+    @FXML public TableColumn<ClasesBiblioteca.Revista, String> AnioRevistas;
+    @FXML public TableColumn<ClasesBiblioteca.Revista, String> TipoRevistas;
+    @FXML public TableColumn<ClasesBiblioteca.Revista, Double> CostoRevistas;
     @FXML private ChoiceBox<String> estadoCB;
     @FXML private Button bVenta;
 
@@ -142,15 +154,34 @@ public class VentanaPrincipalController implements Initializable {
                     ponerLibroSeleccionado();
                 }
             };
+
+    private final ListChangeListener<ClasesBiblioteca.Revista> selectorTablaRevistas =
+            new ListChangeListener<Revista>() {
+                @Override
+                public void onChanged(ListChangeListener.Change<? extends ClasesBiblioteca.Revista> c) {
+                    ponerRevistaSeleccionada();
+                }
+            };
     /**
      * PARA SELECCIONAR UNA CELDA DE LA TABLA "tablaPersonas"
      */
     public ClasesBiblioteca.Libro getTablaLibrosSeleccionados() {
-        if (tablaLibro != null) {
-            List<ClasesBiblioteca.Libro> tabla = tablaLibro.getSelectionModel().getSelectedItems();
+        if (TVLibros != null) {
+            List<ClasesBiblioteca.Libro> tabla = TVLibros.getSelectionModel().getSelectedItems();
             if (tabla.size() == 1) {
                 final ClasesBiblioteca.Libro competicionSeleccionada = tabla.get(0);
                 return competicionSeleccionada;
+            }
+        }
+        return null;
+    }
+
+    public ClasesBiblioteca.Revista getTablaRevistasSeleccionadas() {
+        if (TVRevistas != null) {
+            List<ClasesBiblioteca.Revista> tabla = TVRevistas.getSelectionModel().getSelectedItems();
+            if (tabla.size() == 1) {
+                final ClasesBiblioteca.Revista competicionSeleccionadaR = tabla.get(0);
+                return competicionSeleccionadaR;
             }
         }
         return null;
@@ -161,24 +192,42 @@ public class VentanaPrincipalController implements Initializable {
         posicionLibroEnTabla = libros.indexOf(persona);
     }
 
+    private void ponerRevistaSeleccionada() {
+        final ClasesBiblioteca.Revista persona = getTablaRevistasSeleccionadas();
+        posicionLibroEnTabla = revistas.indexOf(persona);
+    }
+
     public ObservableList<ClasesBiblioteca.Libro> getLibros(){
         return libros;
+    }
+
+    public ObservableList<ClasesBiblioteca.Revista> getRevistas(){
+        return revistas;
     }
 
     /**
      * Método para inicializar la tabla
      */
-    /*
+
     public void inicializarTablaLibros() {
-        nombreCL.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        autorCL.setCellValueFactory(new PropertyValueFactory<>("autor"));
-        editorialCL.setCellValueFactory(new PropertyValueFactory<>("editorial"));
-        generoCL.setCellValueFactory(new PropertyValueFactory<>("genero"));
-        anioCL.setCellValueFactory(new PropertyValueFactory<>("anho"));
-        tipoCL.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        tablaLibro.setItems(getLibros());
+        NombreLibros.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        AutorLibros.setCellValueFactory(new PropertyValueFactory<>("autor"));
+        EditorialLibros.setCellValueFactory(new PropertyValueFactory<>("editorial"));
+        GeneroLibros.setCellValueFactory(new PropertyValueFactory<>("genero"));
+        AnioLibros.setCellValueFactory(new PropertyValueFactory<>("anho"));
+        IDLibros.setCellValueFactory(new PropertyValueFactory<>("id"));
+        TVLibros.setItems(getLibros());
     }
-*/
+    public void inicializarTablaRevistas() {
+        NombreRevistas.setCellValueFactory(new PropertyValueFactory<>("nombreR"));
+        IDRevistas.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        NumeroRevistas.setCellValueFactory(new PropertyValueFactory<>("Numero"));
+        AnioRevistas.setCellValueFactory(new PropertyValueFactory<>("anhoR"));
+        TipoRevistas.setCellValueFactory(new PropertyValueFactory<>("Tipo"));
+        CostoRevistas.setCellValueFactory(new PropertyValueFactory<>("Costo"));
+        TVRevistas.setItems(getRevistas());
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lblUsuario.setText(VentanaRegistroBibliotecaController.nombreResponsable);
@@ -188,7 +237,8 @@ public class VentanaPrincipalController implements Initializable {
         mostarFechaSistema();
 
         // Inicializamos la tabla
-        //this.inicializarTablaLibros();
+        this.inicializarTablaLibros();
+        this.inicializarTablaRevistas();
 
         // Seleccionar las tuplas de la tabla de las personas
 /*        final ObservableList<ClasesBiblioteca.Libro> tablaPersonaSel = tablaLibro.getSelectionModel().getSelectedItems();

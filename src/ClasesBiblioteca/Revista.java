@@ -5,6 +5,8 @@
  */
 package ClasesBiblioteca;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
@@ -13,11 +15,14 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class Revista {
     
-    public SimpleStringProperty nombre;
+    public SimpleStringProperty nombreR = new SimpleStringProperty();
     public int numero;
-    public SimpleStringProperty anho;
+    public SimpleStringProperty anhoR = new SimpleStringProperty();
     public boolean tipoUso;   //true = venta; false = préstamo
-    public SimpleStringProperty tipo;
+    public SimpleIntegerProperty Numero = new SimpleIntegerProperty();
+    public SimpleStringProperty ID = new SimpleStringProperty();
+    public SimpleStringProperty Tipo = new SimpleStringProperty();
+    public SimpleDoubleProperty Costo = new SimpleDoubleProperty();
     public String estado;
     public static int cantRevistas = 0;
     public String idRevista;
@@ -25,7 +30,7 @@ public class Revista {
     public static int diasDePrestamo = 5;
 
     public Revista(){
-        tipo.set("Revista");
+        //tipo.set("Revista");
         estado = "Disponible";
         cantRevistas++;
         if (cantRevistas < 10)
@@ -37,11 +42,15 @@ public class Revista {
     }
 
     public Revista(String pNombre, int pNumero, String pAnho, boolean pTipoUso, double pCosto) {
-        nombre.set(pNombre);
-        numero = pNumero;
-        anho.set(pAnho);
+        nombreR.set(pNombre);
+        Numero.set(pNumero);
+        anhoR.set(pAnho);
         tipoUso = pTipoUso;
-        tipo.set("Revista");
+        if(tipoUso)
+            Tipo.set("Venta");
+        else
+            Tipo.set("Prestamo");
+        //tipo.set("Revista");
         estado = "Disponible";
         cantRevistas++;
         if (cantRevistas < 10)
@@ -50,14 +59,19 @@ public class Revista {
             idRevista = "R-0" + cantRevistas;
         else
             idRevista = "R-" + cantRevistas;
-        if (tipoUso)
+        if (tipoUso) {
             costo = pCosto;
-        else
+            Costo.set(costo);
+        }
+        else {
             costo = 0;
+            Costo.set(costo);
+        }
+        ID.set(idRevista);
     }
     
     public String getNombre() {
-        return String.valueOf(nombre);
+        return String.valueOf(nombreR);
     }
     
     public int getNumero(){
@@ -65,7 +79,7 @@ public class Revista {
     }
     
     public String getAnho() {
-        return String.valueOf(anho);
+        return String.valueOf(anhoR);
     }    
     
     public boolean getTipoUso() {
@@ -85,7 +99,7 @@ public class Revista {
     }
 
     public void setNombre(SimpleStringProperty pNombre) {
-        nombre = pNombre;
+        nombreR = pNombre;
     }
 
     public void setNumero(int pNumero) {
@@ -93,7 +107,7 @@ public class Revista {
     }
 
     public void setAnho(SimpleStringProperty pAnho) {
-        anho = pAnho;
+        anhoR = pAnho;
     }
 
     public void setTipoUso(boolean pTipoUso) {
@@ -120,10 +134,10 @@ public class Revista {
 
     @Override
     public String toString (){
-        String msj = "Nombre: " + nombre + "\n";
+        String msj = "Nombre: " + nombreR + "\n";
         msj += "Número: " + numero + "\n";
-        msj += "Año: " + anho + "\n";
-        msj += "Tipo: " + tipo + "\n";
+        msj += "Año: " + anhoR + "\n";
+        //msj += "Tipo: " + tipo + "\n";
         msj += "Tipo de revista: ";
         if (tipoUso){
             msj += "Venta\n";

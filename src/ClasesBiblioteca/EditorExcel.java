@@ -1,15 +1,11 @@
 package ClasesBiblioteca;
 
-import java.io.InputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Clase que maneja la lectura y escritura de los archivos en ClasesBiblioteca
@@ -101,7 +97,7 @@ public class EditorExcel {
 
                 Libro l;
                 l = new Libro ();     //crea el libro con los parámetros recibidos
-                l.tipo.set(tipo);
+                //l.tipo.set(tipo);
                 l.nombre.set(nombre);
                 l.editorial.set(editorial);
                 l.autor.set(autor);
