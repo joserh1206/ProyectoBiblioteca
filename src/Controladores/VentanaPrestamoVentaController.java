@@ -143,13 +143,13 @@ public class VentanaPrestamoVentaController implements Initializable {
         for (int i = 0; i <librosIngresados.size();i++){
             libroSolicitado.setEstado(false);
             fechaLimite.add(Calendar.DAY_OF_MONTH, libroSolicitado.getDiasPrestamo());
-            VentanaPrincipalController.prestamosRealizados.add(new Prestamo(cliente,libroSolicitado , fechaLimite));
+            VentanaPrincipalController.prestamosRealizados.add(new Prestamo(cliente,libroSolicitado , VentanaPrincipalController.fechaSistema,fechaLimite));
         }
 
         for (int i = 0; i <revistasIngresadas.size();i++){
             revistaSolicitada.setEstado("Prestada");
             fechaLimite.add(Calendar.DAY_OF_MONTH, revistaSolicitada.getDiasPrestamo());
-            VentanaPrincipalController.prestamosRealizados.add(new Prestamo(cliente, revistaSolicitada , fechaLimite));
+            VentanaPrincipalController.prestamosRealizados.add(new Prestamo(cliente, revistaSolicitada, VentanaPrincipalController.fechaSistema,fechaLimite));
         }
     }
 
@@ -187,10 +187,12 @@ public class VentanaPrestamoVentaController implements Initializable {
             if (devoluciones.get(i).libroPrestado != null) {
                 devoluciones.get(i).libroPrestado.setEstado(true);
                 if (VentanaPrincipalController.fechaSistema.after(devoluciones.get(i).fechaLimite)) //Si el cliente se atraso con la devolución
+                    devoluciones.get(i).multado = true;
                     crearMulta(devoluciones.get(i).cliente,devoluciones.get(i).libroPrestado.getNombre(), devoluciones.get(i).libroPrestado.idLibro, devoluciones.get(i).fechaLimite);
             } else {
                 devoluciones.get(i).revistaPrestada.setEstado("Disponible");
                 if (VentanaPrincipalController.fechaSistema.after(devoluciones.get(i).fechaLimite)) //Si el cliente se atraso con la devolución
+                    devoluciones.get(i).multado = true;
                     crearMulta(devoluciones.get(i).cliente,devoluciones.get(i).revistaPrestada.getNombre(), devoluciones.get(i).revistaPrestada.idRevista, devoluciones.get(i).fechaLimite);
             }
 

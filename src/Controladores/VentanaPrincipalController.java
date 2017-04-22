@@ -181,7 +181,7 @@ public class VentanaPrincipalController implements Initializable {
 */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        lblUsuario.setText(Controller.nombre_usuario);
+        lblUsuario.setText(VentanaRegistroBibliotecaController.nombreResponsable);
         estadoCB.setValue("Disponibles");
         estadoCB.setItems(EstadoList);
         //fechaSistema =

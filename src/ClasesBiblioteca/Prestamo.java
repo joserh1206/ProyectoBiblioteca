@@ -18,21 +18,27 @@ public class Prestamo {
     public Revista revistaPrestada;
     public Cliente cliente;
     public Calendar fechaLimite;
+    public Calendar fechaInicio;
     public boolean devuelto;
+    public boolean multado;
 
-    public Prestamo(Cliente pCliente, Libro pLibroPrestado, Calendar pfechaLimite){
+    public Prestamo(Cliente pCliente, Libro pLibroPrestado, Calendar pfechaInicio, Calendar pfechaLimite){
         cliente = pCliente;
         libroPrestado = pLibroPrestado;
+        fechaInicio = pfechaInicio;
         fechaLimite = pfechaLimite;
         revistaPrestada = null;
         devuelto = false;
+        multado = false;
     }
 
-    public Prestamo(Cliente pCliente, Revista pRevistaPrestada, Calendar pfechaLimite) {
+    public Prestamo(Cliente pCliente, Revista pRevistaPrestada, Calendar pfechaInicio, Calendar pfechaLimite) {
         cliente = pCliente;
         revistaPrestada = pRevistaPrestada;
+        fechaInicio = pfechaInicio;
         fechaLimite = pfechaLimite;
         libroPrestado = null;
         devuelto = false;
+        multado = false;
     }
 }
