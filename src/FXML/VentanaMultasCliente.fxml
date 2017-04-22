@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.VentanaConsultaMultasClienteController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.VentanaConsultaMultasClienteController">
    <children>
-      <TableView fx:id="TablaMultas" prefHeight="300.0" prefWidth="545.0">
+      <TableView fx:id="TablaMultas" layoutY="46.0" prefHeight="254.0" prefWidth="545.0">
         <columns>
           <TableColumn fx:id="IDMultas" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="NombreMultas" prefWidth="75.0" text="Nombre" />
