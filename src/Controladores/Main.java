@@ -19,12 +19,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Cliente u = new Cliente();
         u.nombre_usuario = "admin";
-        u.contrasenia = "";
         u.cedula = "123456789";
 
         Cliente o = new Cliente();
         o.nombre_usuario = "Oscar";
-        o.contrasenia = "1234";
         o.cedula = "604410310";
 
         clientes.add(u);

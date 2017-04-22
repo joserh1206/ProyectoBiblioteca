@@ -16,7 +16,6 @@ public class Cliente {
     public String correo;
     public String cedula;
     public String telefono;
-    public String contrasenia;
     public ArrayList<Multa> multasRegistradas;
 
     public Cliente(){
@@ -30,14 +29,6 @@ public class Cliente {
         cedula = pCedula;
         telefono = pTelefono;
         multasRegistradas = new ArrayList<Multa>();
-    }
-
-    public int consultarMultas(){
-        int total = 0;
-        for (int i = 0; i < multasRegistradas.size();i++){
-            total+= multasRegistradas.get(i).montoColones;
-        }
-        return total;
     }
 
     public String getCedula(){
