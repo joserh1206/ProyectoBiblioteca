@@ -3,10 +3,7 @@ package Controladores;
 import Usuario.Cliente;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -46,18 +43,21 @@ public class VentanaConsultaMultasClienteController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         inicializarTablaMultas();
-        System.out.println("Hola mundo");
     }
 
     public void realizarConsulta(){
         Cliente solicitante = obtenerUsuario();
         if (solicitante == null){
-            System.out.println("No existe ese wey");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ID Cliente incorrecto");
+            alert.setHeaderText(null);
+            alert.setContentText("No se han encontrado coindicendias con el ID de usuario ingresado.");
+            alert.showAndWait();
         }
 
         for (int i = 0; i< solicitante.multasRegistradas.size(); i++){
             //Falta agregar las cosas al table
-            System.out.println("Agregar cosas a la tabla sin repetir pls");
+            System.out.println("Aqui se agrega todo a la tabla");
         }
     }
 

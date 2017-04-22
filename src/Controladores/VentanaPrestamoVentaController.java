@@ -7,10 +7,7 @@ import Usuario.Cliente;
 import Usuario.Multa;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.text.DateFormat;
@@ -69,7 +66,11 @@ public class VentanaPrestamoVentaController implements Initializable {
 
     public void realizarAccion(){
         if (!prestamoRB.isSelected() && !devolucionRB.isSelected() & !ventaRB.isSelected()){
-            System.out.println("Seleccione una operación a realizar primero");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No se ha seleccionado una acción");
+            alert.setHeaderText(null);
+            alert.setContentText("Favor ingrese elija una opción antes de generar una lista.");
+            alert.showAndWait();
             return;
         } else if (prestamoRB.isSelected())
             realizarPrestamo();
@@ -85,25 +86,45 @@ public class VentanaPrestamoVentaController implements Initializable {
         Revista revistaSolicitada = obtenerRevista();
 
         if (solicitante == null) {
-            System.out.println("Aqui va una ventana que trata de baka al usuario :)");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ID Cliente incorrecto");
+            alert.setHeaderText(null);
+            alert.setContentText("No se han encontrado coindicendias con el ID de usuario ingresado.");
+            alert.showAndWait();
             return;
         } else if(cuentaConMultas(solicitante)){
-            System.out.println("Pague sus deudas :v");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Deudas pendientes");
+            alert.setHeaderText(null);
+            alert.setContentText("Favor pague todas las multas antes de solicitar un prestamo.");
+            alert.showAndWait();
             return;
         } else if (libroSolicitado == null && revistaSolicitada == null) {
-            System.out.println("Nope, el codigo no es correcto");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ID Articulo incorrecto");
+            alert.setHeaderText(null);
+            alert.setContentText("No se han encontrado coincidencias con el ID del articulo ingresado.");
+            alert.showAndWait();
             return;
         } else if (libroSolicitado != null ) {
             if (libroSolicitado.estado) {
                 librosIngresados.add(libroSolicitado);
-                System.out.println("Se guarda en la lista de confirmacion");
-            } else
-                System.out.println("El libro existe, pero no esta disponible :)");
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Libro no disponible");
+                alert.setHeaderText(null);
+                alert.setContentText("El libro ingresado no esta disponible.");
+                alert.showAndWait();
+            }
         } else{
             if (revistaSolicitada.getEstado().equals("Disponible") && revistaSolicitada.getTipoUso() == false){ //Si esta disponible y es de prestamo
                 revistasIngresadas.add(revistaSolicitada);
             } else {
-                System.out.println("La revista existe, pero no esta disponible :)");
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Revista no disponible");
+                alert.setHeaderText(null);
+                alert.setContentText("La revista ingresada no esta disponible");
+                alert.showAndWait();
             }
         }
     }
@@ -154,17 +175,24 @@ public class VentanaPrestamoVentaController implements Initializable {
     }
 
     public void realizarDevolucion(){
-        System.out.println("Se devuelve el libro! o revista! o... algo");
         Cliente solicitante = obtenerUsuario();
         Libro libroSolicitado = obtenerLibro();
         Revista revistaSolicitada = obtenerRevista();
         Prestamo prestamo;
 
         if (solicitante == null) {
-            System.out.println("Aqui va una ventana que trata de baka al usuario :)");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ID Cliente incorrecto");
+            alert.setHeaderText(null);
+            alert.setContentText("No se han encontrado coindicendias con el ID de usuario ingresado.");
+            alert.showAndWait();
             return;
         } else if (libroSolicitado == null && revistaSolicitada == null) {
-            System.out.println("Nope, el codigo no es correcto");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ID Articulo incorrecto");
+            alert.setHeaderText(null);
+            alert.setContentText("No se han encontrado coincidencias con el ID del articulo ingresado.");
+            alert.showAndWait();
             return;
         } else if (libroSolicitado != null)
             prestamo = obtenerPrestamo(solicitante, libroSolicitado);
@@ -172,7 +200,11 @@ public class VentanaPrestamoVentaController implements Initializable {
             prestamo = obtenerPrestamo(solicitante, revistaSolicitada);
 
         if (prestamo == null){
-            System.out.println("No se encontro el prestamo");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Prestamo no encontrado");
+            alert.setHeaderText(null);
+            alert.setContentText("No se han encontrado prestamos de dicho articulo con su ID de usario.");
+            alert.showAndWait();
             return;
         }
 
@@ -240,10 +272,18 @@ public class VentanaPrestamoVentaController implements Initializable {
         Cliente solicitante = obtenerUsuario();
         Revista revistaSolicitada = obtenerRevista();
         if (solicitante == null) {
-            System.out.println("El usuario esta mal, no existe");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ID Cliente incorrecto");
+            alert.setHeaderText(null);
+            alert.setContentText("No se han encontrado coindicendias con el ID de usuario ingresado.");
+            alert.showAndWait();
             return;
         } else if (revistaSolicitada == null){
-            System.out.println("No existe esa revista");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ID Revista incorrecto");
+            alert.setHeaderText(null);
+            alert.setContentText("No se han encontrado coindicendias con el ID de revista ingresado.");
+            alert.showAndWait();
             return;
         } else if (revistaSolicitada.getEstado().equals("Disponible") && revistaSolicitada.getTipoUso()){
             //revistaSolicitada.setEstado("Vendida");
@@ -265,8 +305,13 @@ public class VentanaPrestamoVentaController implements Initializable {
             terminarDevolucion();
         else if (ventaRB.isSelected())
             terminarVenta();
-        else
-            System.out.println("Seleccione una operación y registre cosas");
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No se ha seleccionado una acción");
+            alert.setHeaderText(null);
+            alert.setContentText("Seleccione una acción y genere una lista primero.");
+            alert.showAndWait();
+        }
     }
 
 }
