@@ -50,6 +50,7 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML private DatePicker fecha;
     @FXML public Button bRegistro;
+    @FXML public Button SeleccionarDiasBT;
     @FXML private Button bRegistrarCliente;
     @FXML private Button consultarDeudasBT;
     @FXML private Label lblUsuario;
@@ -59,6 +60,17 @@ public class VentanaPrincipalController implements Initializable {
     public void cambiarFecha(ActionEvent event) throws IOException{
         fechaSistema.set(fecha.getValue().getYear(), fecha.getValue().getMonthValue(), fecha.getValue().getDayOfMonth());
         mostarFechaSistema();
+    }
+
+    @FXML
+    public void AbrirSeleccionarDias(ActionEvent event) throws IOException{
+        FXMLLoader fxmlL = new FXMLLoader(getClass().getResource("../FXML/VentanaDias.fxml"));
+        Parent rootl = fxmlL.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(rootl));
+        stage.setTitle("Dias de Prestamo");
+        stage.setResizable(false);
+        stage.show();
     }
 
     public void mostarFechaSistema(){

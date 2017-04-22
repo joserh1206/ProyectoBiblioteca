@@ -1,10 +1,5 @@
 package Usuario;
 
-import ClasesBiblioteca.Revista;
-import ClasesBiblioteca.Libro;
-
-import javax.management.StringValueExp;
-
 /**
  * Clase que crea las multas de los clientes
  * @author Randall Delgado
