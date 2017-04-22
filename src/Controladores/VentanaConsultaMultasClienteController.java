@@ -13,8 +13,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by joser on 17/4/2017.
+ * Ventana de consulta y pago de multas
+ * @author Randall Delgado
+ * @author José Luis Rodríguez
+ * @author Óscar Cortés
  */
+
 public class VentanaConsultaMultasClienteController implements Initializable {
 
     @FXML public TableView<ClasesBiblioteca.Libro> TablaMultas;

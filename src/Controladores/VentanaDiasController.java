@@ -3,38 +3,49 @@ package Controladores;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import ClasesBiblioteca.*;
+import javafx.stage.Stage;
 
+import javax.print.attribute.standard.DialogTypeSelection;
 import java.io.IOException;
+import java.io.SyncFailedException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by Jose Luis Rodriguez on 21/4/2017.
+ * Ventana de cambio de días de préstamo
+ * @author Randall Delgado
+ * @author José Luis Rodríguez
+ * @author Óscar Cortés
  */
 
 
 public class VentanaDiasController implements Initializable {
 
-    @FXML CheckBox TodosCB;
-    @FXML CheckBox DomingoCB;
-    @FXML CheckBox LunesCB;
-    @FXML CheckBox MartesCB;
-    @FXML CheckBox MiercolesCB;
-    @FXML CheckBox JuevesCB;
-    @FXML CheckBox ViernesCB;
-    @FXML CheckBox SabadoCB;
+    @FXML TextField DiasLibros;
+    @FXML TextField DiasRevistas;
+    @FXML Button AplicarBT;
 
 
     @FXML
-    public void seleccionarTodos(ActionEvent event) throws IOException{
-        DomingoCB.setSelected(true);
-        LunesCB.setSelected(true);
-        MartesCB.setSelected(true);
-        MiercolesCB.setSelected(true);
-        JuevesCB.setSelected(true);
-        ViernesCB.setSelected(true);
-        SabadoCB.setSelected(true);
+    public void aplicarCambioDias(ActionEvent event) throws IOException{
+        try{
+            Libro.setDiasDePrestamo(Integer.parseInt(DiasLibros.getText()));
+            Revista.setDiasDePrestamo(Integer.parseInt(DiasRevistas.getText()));
+            //System.out.println(Libro.diasDePrestamo);
+            Stage stage = (Stage) AplicarBT.getScene().getWindow();
+            stage.close();
+        }
+        catch(Exception e){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Campos incompletos o incorrectos");
+            alert.setHeaderText(null);
+            alert.setContentText("Un dato no fue ingresado o no es un número. Intente de nuevo.");
+            alert.showAndWait();
+        }
     }
 
     @Override

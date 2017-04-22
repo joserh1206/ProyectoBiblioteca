@@ -117,7 +117,7 @@ public class Libro {
         estado = pEstado;
     }
 
-    public void setDiasDePrestamo (int pDiasDePrestamo) {
+    public static void setDiasDePrestamo (int pDiasDePrestamo) {
         diasDePrestamo = pDiasDePrestamo;
     }
 
