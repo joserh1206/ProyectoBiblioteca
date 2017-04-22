@@ -139,14 +139,17 @@ public class VentanaPrestamoVentaController implements Initializable {
         Cliente cliente = obtenerUsuario();
         Libro libroSolicitado = obtenerLibro();
         Revista revistaSolicitada = obtenerRevista();
+        Calendar fechaLimite = VentanaPrincipalController.fechaSistema;
         for (int i = 0; i <librosIngresados.size();i++){
             libroSolicitado.setEstado(false);
-            VentanaPrincipalController.prestamosRealizados.add(new Prestamo(cliente,libroSolicitado , VentanaPrincipalController.fechaSistema));
+            fechaLimite.add(Calendar.DAY_OF_MONTH, libroSolicitado.getDiasPrestamo());
+            VentanaPrincipalController.prestamosRealizados.add(new Prestamo(cliente,libroSolicitado , fechaLimite));
         }
 
         for (int i = 0; i <revistasIngresadas.size();i++){
             revistaSolicitada.setEstado("Prestada");
-            VentanaPrincipalController.prestamosRealizados.add(new Prestamo(cliente, revistaSolicitada , VentanaPrincipalController.fechaSistema));
+            fechaLimite.add(Calendar.DAY_OF_MONTH, revistaSolicitada.getDiasPrestamo());
+            VentanaPrincipalController.prestamosRealizados.add(new Prestamo(cliente, revistaSolicitada , fechaLimite));
         }
     }
 

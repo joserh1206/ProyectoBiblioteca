@@ -52,7 +52,8 @@ public class VentanaConsultaMultasClienteController implements Initializable {
         }
 
         for (int i = 0; i< solicitante.multasRegistradas.size(); i++){
-
+            //Falta agregar las cosas al table
+            System.out.println("Agregar cosas a la tabla sin repetir pls");
         }
     }
 

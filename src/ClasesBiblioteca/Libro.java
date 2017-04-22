@@ -121,6 +121,8 @@ public class Libro {
         diasDePrestamo = pDiasDePrestamo;
     }
 
+    public int getDiasPrestamo(){return diasDePrestamo;}
+
     @Override
     public String toString (){
         String msj = "Nombre: " + nombre.get() + "\n";

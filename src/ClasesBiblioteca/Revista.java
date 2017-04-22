@@ -116,6 +116,8 @@ public class Revista {
         diasDePrestamo = pDiasDePrestamo;
     }
 
+    public int getDiasPrestamo(){return diasDePrestamo;}
+
     @Override
     public String toString (){
         String msj = "Nombre: " + nombre + "\n";
